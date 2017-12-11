@@ -55,7 +55,6 @@ Data.prototype.getIngredients = function () {
   var d = this.data;
   return d[ingredientsDataName].map(function (obj) {
     obj.stock = d[transactionsDataName].reduce(function (sum, trans) {
-      console.log(sum);
       if (trans.ingredient_id === obj.ingredient_id) {
         return sum + trans.change;
       } else {
