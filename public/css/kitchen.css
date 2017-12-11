@@ -1,0 +1,110 @@
+
+
+@font-face {
+    font-family: 'champagne__limousinesregular';
+    src: url('fonts/champagne/champagne_limousines-webfont.eot');
+    src: url('fonts/champagne/champagne_limousines-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/champagne/champagne_limousines-webfont.woff2') format('woff2'),
+         url('fonts/champagne/champagne_limousines-webfont.woff') format('woff'),
+         url('fonts/champagne/champagne_limousines-webfont.svg#champagne__limousinesregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'crapaudgros';
+    src: url('fonts/crapaud/crapaud_gros-webfont.eot');
+    src: url('fonts/crapaud/crapaud_gros-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/crapaud/crapaud_gros-webfont.woff2') format('woff2'),
+         url('fonts/crapaud/crapaud_gros-webfont.woff') format('woff'),
+         url('fonts/crapaud/crapaud_gros-webfont.svg#crapaudgros') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+  font-family: 'champagne__limousinesregular', arial, sans-serif;
+  background-color: rgb(64,64,64);
+}
+
+#mainDiv{
+  height: 97vh;
+  line-height: 97vh;
+  width: 99vw;
+  text-align: center;
+    color: white;
+
+}
+
+h2{
+    font-size: 230%;
+}
+
+#leftDiv{
+  line-height: normal;
+  border: 2px dashed white;
+  float: left;
+  height: 95%;
+  width: 70%;
+}
+
+#rightDiv{
+  line-height: normal;
+  border: 2px dashed white;
+  float: right;
+  height: 95%;
+  width: 28%;
+}
+
+#orderDiv1{
+    float:left;
+    border: 2px dashed white;
+    height: 70%;
+    margin: 2%;
+    width: 45%;
+}
+
+#orderDiv2{
+    float:right;
+    border: 2px dashed white;
+    height: 70%;
+    margin: 2%;
+    width: 45%;
+}
+
+#orderInfo{
+    display: grid;
+    align-content: center;
+
+}
+
+.smallOrderList{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 46%);
+  grid-gap: 4%;
+
+}
+
+.smallOrderSmoothie{
+  margin: 4%;
+	border: 2px dotted white;
+	width:100%;
+  padding: 1%;
+}
+
+.smallOrderJuice{
+  margin: 4%;
+	border: 2px solid white;
+	width:100%;
+  padding: 1%;
+}
+
+@media (max-width:720px) {
+	.smallOrderList {
+		display:block;
+	}
+	.smallOrder {
+		border: 1px solid #900;
+		width: calc(100% -2em);
+	}
+}

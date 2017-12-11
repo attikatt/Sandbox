@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Juicifers kitchen</title>
+  <link rel="stylesheet" href="css/kitchen.css">
+  <script src="/vue/vue.js" defer></script>
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="js/juicifer-main.js" defer></script>
+  <script src="js/kitchen.js" defer></script>
+</head>
+<body>
+  <div id="mainDiv">
+    <div id=leftDiv>
+        <div id="topDiv">
+            <h1> Beställningar</h1>
+        </div>
+        <div id="orderDiv1" class="orderDiv1">
+                 <order-item-to-prepare class="orderInfo"
+                    v-for="(order, key) in orders"
+                    v-if="!order.done"
+                    :order-id="key"
+                    :order="order"
+                    :ui-labels="uiLabels"
+                    :lang="lang"
+                    :key="key">
+                </order-item-to-prepare>
+            
+        </div>
+        <div id="orderDiv2" class="orderDiv2">
+            <div class="orderInfo">
+                <div class="orderHead">
+                </div>
+                <div class="orderIngredients">
+                </div>
+            </div>
+        </div>
+    </div>
+  <div id="rightDiv">
+  <div id="orders">
+    <h2> Orders </h2>
+    <div class="smallOrderList">
+      <order-list class="smallOrderJuice"
+        v-for="(order, key) in orders"
+        v-if="!order.done && order.type == 'juice'"
+        :order-id="key"
+        :order="order"
+        :ui-labels="uiLabels"
+        :lang="lang"
+        :key="key">
+      </order-list>
+      <order-list class="smallOrderSmoothie"
+        v-for="(order, key) in orders"
+        v-if="!order.done && order.type == 'smoothie'"
+        :order-id="key"
+        :order="order"
+        :ui-labels="uiLabels"
+        :lang="lang"
+        :key="key">
+      </order-list>
+      <!--<order-item-to-prepare class="smallOrder"
+        v-for="(order, key) in orders"
+        v-if="!order.done"
+        :order-id="key"
+        :order="order"
+        :ui-labels="uiLabels"
+        :lang="lang"
+        :key="key">
+      </order-item-to-prepare>-->
+    </div>
+  </div>
+  </div>
+</div>
+</body>
+</html>
