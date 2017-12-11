@@ -31,6 +31,7 @@ body{
 #lager{
   width: 65vw;
   height: 75vh;
+  float: left;
 }
 
 #lagerList{
@@ -78,67 +79,43 @@ li {
   display:inline;
 }
 /* NumPad */
-#container {
-margin: 100px auto;
-width: 760px;
+#lagerConsole {
+  width: 30vw;
+  height: 75vh;
+  float: right;
 }
+
+#consoleContainer{
+}
+
 #keyboard {
-margin: 0;
+width: 80%;
+float:left;
+display: inline-block;
+margin: 7%;
 padding: 0;
 list-style: none;
 }
-    #keyboard li {
-    float: left;
-    margin: 0 5px 5px 0;
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-    line-height: 60px;
-    text-align: center;
-    background: #fff;
-    border: 1px solid #f9f9f9;
-    border-radius: 5px;
-    }
-        .capslock, .tab, .left-shift, .clearl, .switch {
-        clear: left;
-        }
-            #keyboard .tab, #keyboard .delete {
-            width: 70px;
-            }
-            #keyboard .capslock {
-            width: 80px;
-            }
-            #keyboard .return {
-            width: 90px;
-            }
-            #keyboard .left-shift{
-            width: 70px;
-            }
 
-            #keyboard .switch {
-            width: 90px;
-            }
-            #keyboard .rightright-shift {
-            width: 109px;
-            }
-        .lastitem {
-        margin-right: 0;
-        }
-        .uppercase {
-        text-transform: uppercase;
-        }
-        #keyboard .space {
-        float: left;
-        width: 556px;
-        }
-        #keyboard .switch, #keyboard .space, #keyboard .return{
-        font-size: 16px;
-        }
-        .on {
-        display: none;
-        }
-
-
+#keyboard li {
+float: left;
+margin: 0 5px 5px 0;
+width: 25%;
+height: 10%;
+font-size: 24px;
+line-height: 60px;
+text-align: center;
+background: white;
+border: 1px solid #f9f9f9;
+border-radius: 5px;
+color: black;
+}
+.clearl {
+    clear: left;
+}
+#keyboard .enter{
+  width: 89%;
+}
 
 @media (max-width:720px) {
   .smallOrderList {
