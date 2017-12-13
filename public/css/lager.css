@@ -118,13 +118,22 @@ li {
   float: right;
 }
 
-#consoleContainer{
+#changeSaldoConsole{
+    float: top;
+    text-align: center;
+    border: 1px solid rgb(255,255,255);
+    border-radius: 5px;
+    background-color: rgb(255,255,255,0.4);
+    border: 2pt;
+    width: 63%;
+    height: 15%;
+    margin: 19pt;
 }
-
 
 
 #keyboard {
 width: 80%;
+height: auto;
 float:left;
 display: inline-block;
 margin: 7%;
@@ -148,9 +157,9 @@ list-style: none;
     font-size: 24px;
     line-height: 60px;
     text-align: center;
-    border: 1px solid #f9f9f9;
+    border: 1px solid rgb(255,255,255);
     border-radius: 5px;
-    background-color: white;
+    background-color: rgb(255,255,255,0.4);
     background-repeat: no-repeat;
     border: 0pt;
     color: black;
@@ -159,7 +168,7 @@ list-style: none;
 }
 
 .letter{
-    color:black;
+    color:white;
 }
 
 .letterButtonEnter{
@@ -168,20 +177,18 @@ list-style: none;
     font-size: 24px;
     line-height: 60px;
     text-align: center;
-    border: 1px solid #f9f9f9;
+    border: 1px solid rgb(255,255,255);
     border-radius: 5px;
-    background-color: white;
+    background-color: rgb(255,255,255,0.4);
     background-repeat: no-repeat;
     border: 0pt;
-    color: black;
     cursor: pointer;
     overflow: hidden;
-    color:black;
     width: 79%;
 } 
 
 .enter{
-    color:black;
+    color:white;
 }
 
 #clock{
