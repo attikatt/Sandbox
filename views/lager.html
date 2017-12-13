@@ -54,6 +54,7 @@
                 <ingredient
                   ref="ingredient"
                   v-for= "item in ingredients"
+                  :id= "item.ingredient_id"
                   :item="item"
                   :lang="lang"
                   :key="item.ingredient_id">
@@ -61,6 +62,7 @@
             </div>
         </div>
         <div id="lagerConsole">
+                <p id=consoleHeader> ÄNDRA LAGERSALDO</p>
                 <div id=changeSaldoConsole> </div>
                 <ul id="keyboard">
                     <button class=letterButton type="button"><li class="letter">1</li></button>

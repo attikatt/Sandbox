@@ -1,15 +1,28 @@
 'use strict';
 
 Vue.component('ingredient', {
-  props: ['item', 'lang'],
+  name: 'ingredient',
+  props: ['item', 'lang','name'],
   template: ' <div class="ingredient">\
                   <label id="ing_tit">\
-                  <button id ="ingredientLagerButton" v-on:click="incrementCounter">{{item["ingredient_"+ lang]}}</button>\
+                  <button class ="ingredientLagerButton" v-on:click="changeSaldo(item)">{{item["ingredient_"+ lang]}}</button>\
                   </label>\
                   <label id="ing_stock">\
                   {{item.stock}}\
                   </label>\
-              </div>'
+              </div>',
+    methods:{
+        changeSaldo: function(item){
+            console.log('Change saldo')
+            var e = document.getElementById(item.ingredient_id)
+            e.style.background = 'rgb(255,255,255,0.4)'
+            for (ingredient in lagerList){
+                if(ingredient_id != e.ingredient_id){
+                    ingredient_id.style.background ='transparent'; //ordering component
+                }
+            }
+        },
+    }
 });
 
 var nvm = new Vue({
