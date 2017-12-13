@@ -26,6 +26,10 @@ app.use('/vue', express.static(path.join(__dirname, '/node_modules/vue/dist/')))
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/ordering.html'));
 });
+// Serve lager.html as subpage
+app.get('/staff', function (req, res) {
+  res.sendFile(path.join(__dirname, 'views/staff.html'));
+});
 // Serve kitchen.html as subpage
 app.get('/kitchen', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/kitchen.html'));
@@ -35,10 +39,14 @@ app.get('/lager', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/lager.html'));
 });
 
+/*-------------------------------------------------------------------------*/
+
 // Store data in an object to keep the global namespace clean
 function Data() {
-  this.data = {};
-  this.orders = {};
+  this.data = {}; //childobjects. data is read on initialization
+  this.orders = {}; //empty from the beginning
+  this.currentOrderNumber = 100000;
+  //has the functions of prototype, every instance of the object has the frunctions declared as prototypes
 }
 
 Data.prototype.getUILabels = function (lang) {
@@ -81,13 +89,20 @@ Data.prototype.initializeData = function (table) {
       console.log("Data for", table, "done");
     });
 };
-
+/*-------------------------------------------------------------------------*/
 /*
   Adds an order to to the queue and makes an withdrawal from the
   stock. If you have time, you should think a bit about whether
   this is the right moment to do this.
 */
+
+Data.prototype.getOrderNumber = function () {
+  this.currentOrderNumber += 1;
+  return this.currentOrderNumber;
+}
+
 Data.prototype.addOrder = function (order) {
+  var orderId = this.getOrderNumber();
   this.orders[order.orderId] = order.order;
   this.orders[order.orderId].done = false;
   var transactions = this.data[transactionsDataName],
@@ -102,6 +117,7 @@ Data.prototype.addOrder = function (order) {
                        ingredient_id: i[k].ingredient_id,
                        change: -1});
   }
+  return orderId;
 };
 
 Data.prototype.getAllOrders = function () {
@@ -111,6 +127,8 @@ Data.prototype.getAllOrders = function () {
 Data.prototype.markOrderDone = function (orderId) {
   this.orders[orderId].done = true;
 };
+
+/*-------------------------------------------------------------------------*/
 
 var data = new Data();
 // Load initial ingredients. If you want to add columns, do it in the CSV file.
@@ -123,14 +141,16 @@ io.on('connection', function (socket) {
   socket.emit('initialize', { orders: data.getAllOrders(),
                           uiLabels: data.getUILabels(),
                           ingredients: data.getIngredients() });
-
+/*-------------------------------------------------------------------------*/
   // When someone orders something
   socket.on('order', function (order) {
-    data.addOrder(order);
+    var orderNumber = data.addOrder(order);
     // send updated info to all connected clients, note the use of io instead of socket
+    socket.emit('orderNumber', orderNumber);
     io.emit('currentQueue', { orders: data.getAllOrders(),
                           ingredients: data.getIngredients() });
   });
+
   // send UI labels in the chosen language
   socket.on('switchLang', function (lang) {
     socket.emit('switchLang', data.getUILabels(lang));
@@ -141,6 +161,7 @@ io.on('connection', function (socket) {
     io.emit('currentQueue', {orders: data.getAllOrders() });
   });
 });
+/*-------------------------------------------------------------------------*/
 
 var server = http.listen(app.get('port'), function () {
   console.log('Server listening on port ' + app.get('port'));

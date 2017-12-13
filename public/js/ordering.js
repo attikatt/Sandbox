@@ -43,10 +43,14 @@ var vm = new Vue({
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
   data: {
     type: '',
-    chosenIngredients: []/*,
-    volume: 0,
-    price: 0*/
+    chosenIngredients: []
   },
+  created: function() {
+    socket.on("orderNumber",function(orderNumber) {
+      alert("Your ordernumber is " + orderNumber);
+      console.log
+  });
+},
   methods: {
     addToOrder: function (item, type) {
       this.chosenIngredients.push(item);

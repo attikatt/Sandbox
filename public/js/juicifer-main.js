@@ -30,6 +30,12 @@ var sharedVueStuff = {
       this.ingredients = data.ingredients;
     }.bind(this));
 
+  /*  socket.on("orderNumber",function(orderNumber) {
+        this.orders = data.orders;
+        this.orders[order.orderId] = orderNumber;
+        console.log(orderNumber)
+      }.bind(this));*/
+
     socket.on('switchLang', function (data) {
       this.uiLabels = data;
     }.bind(this));
