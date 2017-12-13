@@ -1,3 +1,5 @@
+@import url("reset.css")
+
 @font-face {
   font-family: 'champagne__limousinesregular';
   src: url('fonts/champagne/champagne_limousines-webfont.eot');
@@ -49,6 +51,15 @@ body{
 
 #ing_stock{
   float: right;
+}
+
+#homeButton{
+    float: left;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 0pt;
+    cursor: pointer;
+    overflow: hidden;
 }
 
 #topDiv{
