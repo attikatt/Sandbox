@@ -12,7 +12,7 @@ Vue.component('order-item', {
 
 Vue.component('order-item-short',{
   props: ['uiLabels', 'order', 'orderId','lang', 'name'],
-    template: '<div>{{orderId}} Egen dryck - {{order.type}}</div>'
+  template : '<div>#{{orderId}} </br> Egen dryck ({{order.type}})</div>'
 });
 
 // Stuff that is used both in the ordering system and in the kitchen
@@ -29,12 +29,6 @@ var sharedVueStuff = {
       this.uiLabels = data.uiLabels;
       this.ingredients = data.ingredients;
     }.bind(this));
-
-  /*  socket.on("orderNumber",function(orderNumber) {
-        this.orders = data.orders;
-        this.orders[order.orderId] = orderNumber;
-        console.log(orderNumber)
-      }.bind(this));*/
 
     socket.on('switchLang', function (data) {
       this.uiLabels = data;

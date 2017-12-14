@@ -45,7 +45,7 @@ app.get('/lager', function (req, res) {
 function Data() {
   this.data = {}; //childobjects. data is read on initialization
   this.orders = {}; //empty from the beginning
-  this.currentOrderNumber = 100000;
+  this.currentOrderNumber = 0;
   //has the functions of prototype, every instance of the object has the frunctions declared as prototypes
 }
 
@@ -103,8 +103,8 @@ Data.prototype.getOrderNumber = function () {
 
 Data.prototype.addOrder = function (order) {
   var orderId = this.getOrderNumber();
-  this.orders[order.orderId] = order.order;
-  this.orders[order.orderId].done = false;
+  this.orders[orderId] = order.order;
+  this.orders[orderId].done = false;
   var transactions = this.data[transactionsDataName],
     //find out the currently highest transaction id
     transId =  transactions[transactions.length - 1].transaction_id,

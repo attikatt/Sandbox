@@ -20,7 +20,7 @@ Vue.component('order-item-to-prepare', {
           <order-item\
             :ui-labels="uiLabels"\
             :lang="lang"\
-            :order-id="orderId"\
+            :order-id=orderId"\
             :order="order">\
           </order-item>\
             <button v-on:click="orderDone">\

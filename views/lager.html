@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Juicifers kitchen Lager</title>
+  <title>Juicifers Lager</title>
   <link rel="stylesheet" href="css/lager.css">
   <script src="/vue/vue.js" defer></script>
   <script src="/socket.io/socket.io.js" defer></script>
@@ -53,6 +53,7 @@
             <div id="lagerList" class="scrollbar">
                 <ingredient
                   ref="ingredient"
+                  type="ingredient_butt"
                   v-for= "item in ingredients"
                   :id= "item.ingredient_id"
                   :item="item"
