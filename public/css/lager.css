@@ -47,6 +47,7 @@ body{
 }
 
 .ingredient {
+  font-family: 'champagne__limousinesregular', arial, sans-serif;
   border: 1px solid white;
   width: 60vw;
   border-radius: 1vw;
@@ -55,11 +56,15 @@ body{
   margin: 1%;
 }
 
-.ingredientLagerButton{
+.highlight{
+    color:black;
+}
+
+.ingredient_butt{
     font-family: 'champagne__limousinesregular', arial, sans-serif;
     text-align: left;
     color: white;
-    background-color: transparent;
+    background-color: rgb(255,255,255,0.4);
     border: 0pt;
     cursor: pointer;
     border-radius: 25px;
@@ -109,7 +114,7 @@ li {
   text-align: center;
   padding-left: 0.5vw;
   padding-right: 0.5vw;
-  color:white;
+  color:transparent;
   display:inline;
 }
 /* NumPad */
@@ -122,6 +127,7 @@ li {
 #consoleHeader{
     font-size: 2.1vw;
     text-align: left;
+    margin-left: 2.6vw;
 }
 
 #changeSaldoConsole{
@@ -130,7 +136,6 @@ li {
     border: 1px solid rgb(255,255,255);
     border-radius: 5px;
     background-color: rgb(255,255,255,0.4);
-    border: 2pt;
     width: 63%;
     height: 15%;
     margin: 19pt;
@@ -152,8 +157,10 @@ list-style: none;
 #keyboard li {
 
 }
+
 .clearl {
     clear: left;
+    color: white;
 }
 
 
@@ -171,14 +178,18 @@ list-style: none;
     background-color: rgb(255,255,255,0.4);
     background-repeat: no-repeat;
     border: 0pt;
-    color: black;
+    color: white;
     cursor: pointer;
     overflow: hidden;
 }
 
-.letter{
-    color:white;
+#changeSaldoConsoleChild{
+    text-align:center;
+    float: center;
+    font-size: 3vw;
+    margin-top: 1.5vw;
 }
+
 
 .letterButtonEnter{
     font-family: 'champagne__limousinesregular', arial, sans-serif;
@@ -199,6 +210,11 @@ list-style: none;
 
 .enter{
     color:white;
+    text-align: center;
+}
+
+.remove{
+    color: white;
 }
 
 .isActive{

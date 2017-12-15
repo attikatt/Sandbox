@@ -32,13 +32,28 @@ body{
   line-height: 97vh;
   width: 99vw;
   text-align: center;
-    color: white;
+  color: white;
 
 }
 
 h2 {
-    font-size: 230%;
+    font-size: 3vw;
 }
+
+#topDiv{
+    height: 8vw;
+    font-size: 1.5vw;
+}
+
+#homeButton{
+    float: left;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 0pt;
+    cursor: pointer;
+    overflow: hidden;
+}
+
 span {
   text-transform: capitalize;
 }
@@ -47,7 +62,7 @@ span {
   line-height: normal;
   border: 2px dashed white;
   float: left;
-  height: 95%;
+  height: 90%;
   width: 70%;
 }
 
@@ -55,7 +70,7 @@ span {
   line-height: normal;
   border: 2px dashed white;
   float: right;
-  height: 95%;
+  height: 90%;
   width: 28%;
 }
 
@@ -100,6 +115,14 @@ span {
 	border: 2px solid white;
 	width:100%;
   padding: 1%;
+}
+
+#clock{
+    font-size: 4vh;
+    float:right;
+    color: white;
+    padding-right: 1vw;
+    margin-bottom: 4vw;
 }
 
 @media (max-width:720px) {

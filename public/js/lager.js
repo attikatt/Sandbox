@@ -3,20 +3,23 @@
 Vue.component('ingredient', {
   name: 'ingredient',
   props: ['item', 'lang','name'],
-  template: ' <div class="ingredient">\
+  template: ' <div class="{highlight:chosen}, ingredient" v-on:click="changeSaldo(item)">\
                   <label id="ing_tit">\
-                  <button class ="ingredientLagerButton" v-on:click="changeSaldo(item)">{{item["ingredient_"+ lang]}}</button>\
+                  {{item["ingredient_"+ lang]}}\
                   </label>\
                   <label id="ing_stock">\
                   {{item.stock}}\
                   </label>\
               </div>',
+    data: function(){
+    return{
+    chosen:false
+}
+},
     methods:{
         changeSaldo: function(item){
-
-          console.log('Change saldo')
-            var e = document.getElementById(item.ingredient_id)
-            e.style.background = 'rgb(255,255,255,0.4)'
+            this.chosen= !this.chosen
+            console.log(this.chosen)
           }
         }
 });
@@ -43,6 +46,23 @@ setTimeout(updateClock,1000);
 }
  updateClock();
 
-function createButton(){
+var saldoLetterList = [];
 
+function changeSaldo(letterButton){
+    console.log("changeSaldoFunction");
+    var letterButton = letterButton.value;
+    saldoLetterList.push(letterButton);
+    document.getElementById("changeSaldoConsoleChild").innerHTML = saldoLetterList.join("");
 }
+
+function backSpaceLetter(){
+    console.log('Remove letter');
+    saldoLetterList.pop();
+    document.getElementById("changeSaldoConsoleChild").innerHTML = saldoLetterList.join("");
+}
+
+function clearSaldoField(){
+    saldoLetterList = [];
+    document.getElementById("changeSaldoConsoleChild").innerHTML = saldoLetterList.join("");
+}
+
