@@ -57,7 +57,7 @@ body{
 }
 
 .highlight{
-    color:black;
+    border: 3px solid white; 
 }
 
 .ingredient_butt{

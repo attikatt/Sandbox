@@ -117,8 +117,18 @@ Data.prototype.addOrder = function (order) {
                        ingredient_id: i[k].ingredient_id,
                        change: -1});
   }
-  return orderId;
 };
+
+Data.prototype.changeLagerSaldo = function (item){
+  var transactions = this.data[transactionsDataName],
+  transId =  transactions[transactions.length - 1].transaction_id,
+  transactions.push({transaction_id: transId,
+                     ingredient_id: item.ingredient_id,
+                     change: -1})
+}
+
+//ta emot meddelande från lager, justera lager skicka en "order" socket.on('updateStock') har funktion som kör transaktion med objectet
+//justera genom createTransaction ioemit (till alla clienter)
 
 Data.prototype.getAllOrders = function () {
   return this.orders;
@@ -159,6 +169,10 @@ io.on('connection', function (socket) {
   socket.on('orderDone', function (orderId) {
     data.markOrderDone(orderId);
     io.emit('currentQueue', {orders: data.getAllOrders() });
+  });
+  socket.on('updateStock', function (item) {
+    data.changeLagerSaldo(item);
+    io.emit('currentQueue', {ingredients: data.getIngredients() });
   });
 });
 /*-------------------------------------------------------------------------*/

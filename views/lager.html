@@ -51,10 +51,12 @@
                     </ul>
             </div>
             <div id="lagerList" class="scrollbar">
+              <!--skickar till js-->
                 <ingredient
                   ref="ingredient"
                   type="ingredient_butt"
                   v-for= "item in ingredients"
+                  v-on:ingredientchosen = "chosenIng = item"
                   :id= "item.ingredient_id"
                   :item="item"
                   :lang="lang"
@@ -64,7 +66,7 @@
         </div>
         <div id="lagerConsole">
                 <p id=consoleHeader> ÄNDRA LAGERSALDO</p>
-            <p id=chosenIngredient></p>
+            <p id=chosenIngredient>  {{chosenIng["ingredient_"+ lang]}}  <br>  STOCK:    {{chosenIng.stock}}</p>
             <div id=changeSaldoConsole>  <p id=changeSaldoConsoleChild></p> </div>
                 <ul id="keyboard">
                     <input type="button" onClick="changeSaldo(this)" id ="letterButton" class=letterButton value="1"><li >1</li>
@@ -79,7 +81,7 @@
                     <button class=letterButton type="button" onClick="clearSaldoField()"><li class="clearl delete">X</li></button>
                     <input type="button" onClick="changeSaldo(this)" id =letterButton class=letterButton value="0"><li >0</li>
                     <button class=letterButton type="button" value="backSpaceLetter" onClick="backSpaceLetter()"><li class="remove"><</li></button>
-                    <button class=letterButtonEnter type="button" v-onclick: enterSaldo><li class="return clearl enter">ENTER</li></button>
+                    <button class=letterButtonEnter type="button" v-on:click.native="updateChosen()"><li class="return clearl enter">ENTER</li></button>
                 </ul>
             <div id=clock> </div>
         </div>

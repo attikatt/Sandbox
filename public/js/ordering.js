@@ -6,7 +6,7 @@ Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
   template: ' <div class="ingredient">\
                   <label>\
-                    <button v-on:click="incrementCounter">{{ counter }}</button>\
+                    <button v-on:click="incrementCounter">{{counter}}</button>\
                     {{item["ingredient_"+ lang]}}\
                   </label>\
               </div>',

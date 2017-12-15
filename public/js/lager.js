@@ -2,8 +2,8 @@
 
 Vue.component('ingredient', {
   name: 'ingredient',
-  props: ['item', 'lang','name'],
-  template: ' <div class="{highlight:chosen}, ingredient" v-on:click="changeSaldo(item)">\
+  props: ['item','lang','name'],
+  template: ' <div v-bind:class="[{highlight: chosen}, \'ingredient\']" v-on:click="changeSaldo()">\
                   <label id="ing_tit">\
                   {{item["ingredient_"+ lang]}}\
                   </label>\
@@ -13,26 +13,35 @@ Vue.component('ingredient', {
               </div>',
     data: function(){
     return{
-    chosen:false
+    chosen: false
 }
 },
     methods:{
-        changeSaldo: function(item){
-            this.chosen = !this.chosen
-            document.getElementById(item.ingredient_id).style.color = "black"
-            var chosenIng = [item.ingredient_en.toUpperCase() + "<br>" + 'STOCK : ' + item.stock]
-            document.getElementById("chosenIngredient").innerHTML = chosenIng;
+        changeSaldo: function() {
+            this.chosen = !this.chosen;
+            this.$emit('ingredientchosen');
+            console.log("emitted")
+//refs -föräldrar kan inte komma åt barnelements datastrukturer
           }
-        }
+        } //emit
 });
 
-var nvm = new Vue({
-  el: '#lagerList',
+var vm = new Vue({
+  el: '#lagerDiv',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
   data: {
+    chosenIng: 'No ingredient chosen',
     type: ''
-  }
-
+  },
+  method: {
+    updateChosen: function() {
+      console.log("In the method");
+      ingredient: this.chosenIng;
+      console.log(ingredient);
+    //socket.emit('updateStock', { ingredient:chosenIng })
+    //socket emit (meddelande till servern) updateStock,{ingredients:[chosenIng]+skicka med amount}
+    }
+  },
 });
 
 function updateClock(){
@@ -66,12 +75,4 @@ function backSpaceLetter(){
 function clearSaldoField(){
     saldoLetterList = [];
     document.getElementById("changeSaldoConsoleChild").innerHTML = saldoLetterList.join("");
-}
-
-function sortIngredients(){
-    
-}
-
-function getChosen(){
-    
 }
