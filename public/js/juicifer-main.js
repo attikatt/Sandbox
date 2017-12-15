@@ -11,8 +11,8 @@ Vue.component('order-item', {
 });
 
 Vue.component('order-item-short',{
-  props: ['uiLabels', 'order', 'orderId','lang', 'name'],
-  template : '<div>#{{orderId}} </br> Egen dryck ({{order.type}})</div>'
+  props: ['uiLabels', 'order', 'type', 'orderId','lang', 'name'],
+  template : '<div>#{{orderId}} </br> Egen dryck (<span>{{order.type}}</span>)</div>'
 });
 
 // Stuff that is used both in the ordering system and in the kitchen

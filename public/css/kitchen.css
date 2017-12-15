@@ -36,8 +36,11 @@ body{
 
 }
 
-h2{
+h2 {
     font-size: 230%;
+}
+span {
+  text-transform: capitalize;
 }
 
 #leftDiv{

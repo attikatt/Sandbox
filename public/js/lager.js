@@ -13,24 +13,13 @@ Vue.component('ingredient', {
               </div>',
     methods:{
         changeSaldo: function(item){
+
+          console.log('Change saldo')
             var e = document.getElementById(item.ingredient_id)
-            var ingredients = document.getElementsByClassName('ingredients')
-            e.style.color = 'blue'
-            clearElse(e)
             e.style.background = 'rgb(255,255,255,0.4)'
-
           }
-}
+        }
 });
-
-function clearElse(item){
-  var kompisar = lagerList.querySelectorAll('ingredient')
-  kompisar.forEach(print())
-  }
-function print(){
-  console.log("Hi")
-}
-
 
 var nvm = new Vue({
   el: '#lagerList',
