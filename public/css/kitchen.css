@@ -60,7 +60,6 @@ span {
 
 #leftDiv{
   line-height: normal;
-  border: 2px dashed white;
   float: left;
   height: 90%;
   width: 70%;
@@ -68,7 +67,6 @@ span {
 
 #rightDiv{
   line-height: normal;
-  border: 2px dashed white;
   float: right;
   height: 90%;
   width: 28%;
@@ -119,10 +117,8 @@ span {
 
 #clock{
     font-size: 4vh;
-    float:right;
-    color: white;
-    padding-right: 1vw;
-    margin-bottom: 4vw;
+    float: right;
+    margin-top: 60vh;
 }
 
 @media (max-width:720px) {

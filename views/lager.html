@@ -19,35 +19,35 @@
         <div id="lager">
             <div id="alphabet">
               <ul class="alphabet">
-                        <li>A</li>
-                        <li>B</li>
-                        <li>C</li>
-                        <li>D</li>
-                        <li>E</li>
-                        <li>F</li>
-                        <li>G</li>
-                        <li>H</li>
-                        <li>I</li>
-                        <li>J</li>
-                        <li>K</li>
-                        <li>L</li>
-                        <li>M</li>
-                        <li>N</li>
-                        <li>O</li>
-                        <li>P</li>
-                        <li>Q</li>
-                        <li>R</li>
-                        <li>S</li>
-                        <li>T</li>
-                        <li>U</li>
-                        <li>V</li>
-                        <li>W</li>
-                        <li>X</li>
-                        <li>Y</li>
-                        <li>Z</li>
-                        <li>Å</li>
-                        <li>Ä</li>
-                        <li>Ö</li>
+                        <li class=alphLetter>A</li>
+                        <li class=alphLetter>B</li>
+                        <li class=alphLetter>C</li>
+                        <li class=alphLetter>D</li>
+                        <li class=alphLetter>E</li>
+                        <li class=alphLetter>F</li>
+                        <li class=alphLetter>G</li>
+                        <li class=alphLetter>H</li>
+                        <li class=alphLetter>I</li>
+                        <li class=alphLetter>J</li>
+                        <li class=alphLetter>K</li>
+                        <li class=alphLetter>L</li>
+                        <li class=alphLetter>M</li>
+                        <li class=alphLetter>N</li>
+                        <li class=alphLetter>O</li>
+                        <li class=alphLetter>P</li>
+                        <li class=alphLetter>Q</li>
+                        <li class=alphLetter>R</li>
+                        <li class=alphLetter>S</li>
+                        <li class=alphLetter>T</li>
+                        <li class=alphLetter>U</li>
+                        <li class=alphLetter>V</li>
+                        <li class=alphLetter>W</li>
+                        <li class=alphLetter>X</li>
+                        <li class=alphLetter>Y</li>
+                        <li class=alphLetter>Z</li>
+                        <li class=alphLetter>Å</li>
+                        <li class=alphLetter>Ä</li>
+                        <li class=alphLetter>Ö</li>
                     </ul>
             </div>
             <div id="lagerList" class="scrollbar">
@@ -55,7 +55,6 @@
                   ref="ingredient"
                   type="ingredient_butt"
                   v-for= "item in ingredients"
-                  :name = "ingredient_button"
                   :id= "item.ingredient_id"
                   :item="item"
                   :lang="lang"
@@ -65,7 +64,8 @@
         </div>
         <div id="lagerConsole">
                 <p id=consoleHeader> ÄNDRA LAGERSALDO</p>
-                <div id=changeSaldoConsole> <p id=changeSaldoConsoleChild></p> </div>
+            <p id=chosenIngredient></p>
+            <div id=changeSaldoConsole>  <p id=changeSaldoConsoleChild></p> </div>
                 <ul id="keyboard">
                     <input type="button" onClick="changeSaldo(this)" id ="letterButton" class=letterButton value="1"><li >1</li>
                     <input type="button" onClick="changeSaldo(this)" id =letterButton class=letterButton value="2"><li >2</li>

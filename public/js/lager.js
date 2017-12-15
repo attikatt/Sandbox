@@ -18,8 +18,10 @@ Vue.component('ingredient', {
 },
     methods:{
         changeSaldo: function(item){
-            this.chosen= !this.chosen
-            console.log(this.chosen)
+            this.chosen = !this.chosen
+            document.getElementById(item.ingredient_id).style.color = "black"
+            var chosenIng = [item.ingredient_en.toUpperCase() + "<br>" + 'STOCK : ' + item.stock]
+            document.getElementById("chosenIngredient").innerHTML = chosenIng;
           }
         }
 });
@@ -66,3 +68,10 @@ function clearSaldoField(){
     document.getElementById("changeSaldoConsoleChild").innerHTML = saldoLetterList.join("");
 }
 
+function sortIngredients(){
+    
+}
+
+function getChosen(){
+    
+}
