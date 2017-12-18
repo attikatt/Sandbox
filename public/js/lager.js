@@ -65,7 +65,7 @@ setTimeout(updateClock,1000);
 
 var saldoLetterList = [];
 
-function putToChosen(letterButton){
+function numberPressed(letterButton){
     var letterButton = letterButton.value;
     saldoLetterList.push(letterButton);
     saldo = '';

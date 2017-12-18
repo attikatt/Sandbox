@@ -69,17 +69,17 @@
             <p id=chosenIngredient>  {{chosenIng["ingredient_"+ lang]}}  <br>  STOCK:    {{chosenIng.stock}}</p>
             <div id=changeSaldoConsole>  <p id=changeSaldoConsoleChild></p> </div>
                 <ul id="keyboard">
-                    <input type="button" onClick="putToChosen(this)" id ="letterButton" class=letterButton value="1"><li >1</li>
-                    <input type="button" onClick="putToChosen(this)" id =letterButton class=letterButton value="2"><li >2</li>
-                    <input type="button" onClick="putToChosen(this)" id =letterButton class=letterButton value="3"><li >3</li>
-                    <input type="button" onClick="putToChosen(this)" id =letterButton class=letterButton value="4"><li >4</li>
-                    <input type="button" onClick="putToChosen(this)" id =letterButton class=letterButton value="5"><li >5</li>
-                    <input type="button" onClick="putToChosen(this)" id =letterButton class=letterButton value="6"><li >6</li>
-                    <input type="button" onClick="putToChosen(this)" id =letterButton class=letterButton value="7"><li >7</li>
-                    <input type="button" onClick="putToChosen(this)" id =letterButton class=letterButton value="8"><li >8</li>
-                    <input type="button" onClick="putToChosen(this)" id =letterButton class=letterButton value="9"><li class="letter">9</li>
+                    <input type="button" onClick="numberPressed(this)" id ="letterButton" class=letterButton value="1"><li >1</li>
+                    <input type="button" onClick="numberPressed(this)" id =letterButton class=letterButton value="2"><li >2</li>
+                    <input type="button" onClick="numberPressed(this)" id =letterButton class=letterButton value="3"><li >3</li>
+                    <input type="button" onClick="numberPressed(this)" id =letterButton class=letterButton value="4"><li >4</li>
+                    <input type="button" onClick="numberPressed(this)" id =letterButton class=letterButton value="5"><li >5</li>
+                    <input type="button" onClick="numberPressed(this)" id =letterButton class=letterButton value="6"><li >6</li>
+                    <input type="button" onClick="numberPressed(this)" id =letterButton class=letterButton value="7"><li >7</li>
+                    <input type="button" onClick="numberPressed(this)" id =letterButton class=letterButton value="8"><li >8</li>
+                    <input type="button" onClick="numberPressed(this)" id =letterButton class=letterButton value="9"><li class="letter">9</li>
                     <button class=letterButton type="button" onClick="clearSaldoField()"><li class="clearl delete">X</li></button>
-                    <input type="button" onClick="putToChosen(this)" id =letterButton class=letterButton value="0"><li >0</li>
+                    <input type="button" onClick="numberPressed(this)" id =letterButton class=letterButton value="0"><li >0</li>
                     <button class=letterButton type="button" value="backSpaceLetter" onClick="backSpaceLetter()"><li class="remove"><</li></button>
                     <button class=letterButtonEnter type="button" v-on:Click="updateChosen()"><li class="return clearl enter">ENTER</li></button>
                 </ul>

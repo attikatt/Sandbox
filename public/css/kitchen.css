@@ -75,14 +75,34 @@ span {
 #orderDiv1{
     float:left;
     border: 2px dashed white;
+    border-radius: 1vw;
     height: 70%;
     margin: 2%;
     width: 45%;
 }
 
+#orderInfoHead{
+  margin-top: 3%;
+  margin-bottom: 3%;
+  font-size: 2.5vw;
+  font-weight: bold;
+}
+
+#myCanvas{
+  float:left
+}
+
+#orderInfo{
+  text-transform: capitalize;
+  font-size: 2vw;
+  float: right;
+  margin-right: 1vw;
+}
+
 #orderDiv2{
     float:right;
     border: 2px dashed white;
+    border-radius: 1vw;
     height: 70%;
     margin: 2%;
     width: 45%;
@@ -101,18 +121,22 @@ span {
 
 }
 
-.smallOrderSmoothie{
+.smoothie{
   margin: 4%;
 	border: 2px dotted white;
-	width:100%;
+  border-radius: 0.5vw;
+	width:90%;
   padding: 1%;
+  cursor: pointer;
 }
 
-.smallOrderJuice{
+.juice{
   margin: 4%;
 	border: 2px solid white;
-	width:100%;
+  border-radius: 0.5vw;
+	width:90%;
   padding: 1%;
+  cursor: pointer;
 }
 
 #clock{
