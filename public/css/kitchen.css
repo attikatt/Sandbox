@@ -88,15 +88,13 @@ span {
   font-weight: bold;
 }
 
-#myCanvas{
-  float:left
-}
+
 
 #orderInfo{
   text-transform: capitalize;
   font-size: 2vw;
-  float: right;
-  margin-right: 1vw;
+
+
 }
 
 #orderDiv2{
