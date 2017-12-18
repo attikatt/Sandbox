@@ -26,6 +26,8 @@ Vue.component('ingredient', {
         } //emit
 });
 
+var saldo = '';
+
 var vm = new Vue({
   el: '#lagerDiv',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
@@ -33,13 +35,13 @@ var vm = new Vue({
     chosenIng: 'No ingredient chosen',
     type: ''
   },
-  method: {
+  methods: {
     updateChosen: function() {
       console.log("In the method");
-      ingredient: this.chosenIng;
-      console.log(ingredient);
-    //socket.emit('updateStock', { ingredient:chosenIng })
-    //socket emit (meddelande till servern) updateStock,{ingredients:[chosenIng]+skicka med amount}
+      console.log(this.chosenIng);
+      socket.emit('updateStock', {ingredient:this.chosenIng})
+      console.log('Efter socket emit')
+      //socket emit (meddelande till servern) updateStock,{ingredients:[chosenIng]+skicka med amount}
     }
   },
 });
@@ -59,11 +61,16 @@ setTimeout(updateClock,1000);
 
 var saldoLetterList = [];
 
+
 function changeSaldo(letterButton){
-    console.log("changeSaldoFunction");
     var letterButton = letterButton.value;
     saldoLetterList.push(letterButton);
+    saldo = '';
+    for (var i =0; i < saldoLetterList.length; i++){
+      saldo = Number(saldo + saldoLetterList[i]);
+    };
     document.getElementById("changeSaldoConsoleChild").innerHTML = saldoLetterList.join("");
+    console.log(saldo)
 }
 
 function backSpaceLetter(){
