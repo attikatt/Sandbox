@@ -20,7 +20,7 @@ Vue.component('ingredient', {
         changeSaldo: function() {
             this.chosen = !this.chosen;
             this.$emit('ingredientchosen');
-            console.log("emitted")
+            console.log("Valt ingrediens")
 //refs -föräldrar kan inte komma åt barnelements datastrukturer
           }
         } //emit
@@ -38,8 +38,7 @@ var vm = new Vue({
   methods: {
     updateChosen: function() {
       console.log("In the method");
-      console.log(this.chosenIng);
-      socket.emit('updateStock', {ingredient:this.chosenIng})
+      socket.emit('updateStock', {ingredient:this.chosenIng}, saldo)
       console.log('Efter socket emit')
       //socket emit (meddelande till servern) updateStock,{ingredients:[chosenIng]+skicka med amount}
     }
@@ -60,7 +59,6 @@ setTimeout(updateClock,1000);
  updateClock();
 
 var saldoLetterList = [];
-
 
 function changeSaldo(letterButton){
     var letterButton = letterButton.value;
