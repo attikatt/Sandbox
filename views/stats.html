@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Juicifers Sats</title>
+    <link rel="stylesheet" href="css/stats.css">
+    <script src="/vue/vue.js" defer></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="js/juicifer-main.js" defer></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Type of drink', 'Amount ordered'],
+          ['Smoothie',     11],
+          ['Juice',      2]
+        ]);
+
+        var options = {
+          title: 'Distribution of orders',
+          pieHole: 0.4,
+          'backgroundColor':'transparent',
+          'textStyle': {color: 'white', fontName: 'Georgia', fontSize: '10'}
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+
+    </script>
+  </head>
+  <body>
+    <div id="topDiv">
+        <p > <button id=homeButton type="button" onclick="location.href='/staff';"> <img src="images/home.png" alt="Home Button" width=70px/> </button> Statistik</p>
+    </div>
+    <div id="donutchart"></div>
+  </body>
+</html>
