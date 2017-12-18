@@ -3,7 +3,7 @@
 Vue.component('ingredient', {
   name: 'ingredient',
   props: ['item','lang','name'],
-  template: ' <div v-bind:class="[{highlight: chosen}, \'ingredient\']" v-on:click="changeSaldo()">\
+  template: ' <div v-bind:class="[{highlight: chosen}, \'ingredient\']" v-on:click="putToChosen()">\
                   <label id="ing_tit">\
                   {{item["ingredient_"+ lang]}}\
                   </label>\
@@ -17,10 +17,11 @@ Vue.component('ingredient', {
 }
 },
     methods:{
-        changeSaldo: function() {
+        putToChosen: function() {
+            vm.unmarkOtherIngredients();
             this.chosen = !this.chosen;
             this.$emit('ingredientchosen');
-            console.log("Valt ingrediens")
+
 //refs -föräldrar kan inte komma åt barnelements datastrukturer
           }
         } //emit
@@ -37,10 +38,14 @@ var vm = new Vue({
   },
   methods: {
     updateChosen: function() {
-      console.log("In the method");
       socket.emit('updateStock', {ingredient:this.chosenIng}, saldo)
-      console.log('Efter socket emit')
+      clearSaldoField()
       //socket emit (meddelande till servern) updateStock,{ingredients:[chosenIng]+skicka med amount}
+    },
+    unmarkOtherIngredients: function() {
+      for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
+        this.$refs.ingredient[i].chosen = false; //unmark other Ingredients
+      }
     }
   },
 });
@@ -60,7 +65,7 @@ setTimeout(updateClock,1000);
 
 var saldoLetterList = [];
 
-function changeSaldo(letterButton){
+function putToChosen(letterButton){
     var letterButton = letterButton.value;
     saldoLetterList.push(letterButton);
     saldo = '';
@@ -68,11 +73,9 @@ function changeSaldo(letterButton){
       saldo = Number(saldo + saldoLetterList[i]);
     };
     document.getElementById("changeSaldoConsoleChild").innerHTML = saldoLetterList.join("");
-    console.log(saldo)
 }
 
 function backSpaceLetter(){
-    console.log('Remove letter');
     saldoLetterList.pop();
     document.getElementById("changeSaldoConsoleChild").innerHTML = saldoLetterList.join("");
 }

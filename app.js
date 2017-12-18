@@ -121,7 +121,6 @@ Data.prototype.addOrder = function (order) {
 
 Data.prototype.changeLagerSaldo = function (item, saldo) {
   var transactions = this.data[transactionsDataName]
-  console.log(transactions)
   var transId = transactions[transactions.length - 1].transaction_id
   transactions.push({transaction_id: transId,
                      ingredient_id: item.ingredient.ingredient_id,
@@ -174,7 +173,6 @@ io.on('connection', function (socket) {
   });
 
   socket.on('updateStock', function (item, saldo) {
-    console.log("Kommer in i updateStock");
     data.changeLagerSaldo(item, saldo);
     io.emit('currentQueue', {ingredients: data.getIngredients() });
   });
