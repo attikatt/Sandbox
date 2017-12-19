@@ -58,21 +58,37 @@ var vm = new Vue({
   el: '#mainDiv',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
   data: {
-    activeOrderJuice: "no Juice chosen",
-    activeOrderSmoothie: "no Smoothie chosen"
+    activeOrder: {juice: "no Juice chosen", smoothie:"no Smoothie chosen" },
+    activeOrderStage: {juice: "not-started", smoothie: "not-started" }
   },
+  // computed: {
+  //   activeOrderJuiceStage: function(order) {
+  //     if (this.activeOrderJuice == order)
+  //       return {"started"};
+  //     else
+  //       return {"not_started"};
+  //   }
+  // },
   methods: {
+    getActiveOrderStage: function(order) {
+        if (this.activeOrder[order.type] == order)
+          return this.activeOrderStage[order.type];
+    },
     markDone: function (orderid) {
       socket.emit("orderDone", orderid);
     },
-    ejPaborjad: function (order){
-      
-    },
-    paborjad: function(){
+    ejPaborjad: function (type,orderDiv,style){
+      this.activeOrderStage[type] = "not-started";
+      document.getElementById(orderDiv).style.border = "3pt " + style + " white";
 
     },
-    klar: function(){
-
+    paborjad: function(type,orderDiv){
+      this.activeOrderStage[type] = "started";
+      document.getElementById(orderDiv).style.border = "3pt dotted yellow"
+    },
+    klar: function(type,orderDiv){
+      this.activeOrderStage[type] = "ready";
+      document.getElementById(orderDiv).style.border = "3pt dotted green"
     },
 
     displayChosenDrink: function(order, orderId) {

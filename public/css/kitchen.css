@@ -44,7 +44,7 @@ h2 {
 
 #topDiv{
     height: 8vw;
-    font-size: 1.5vw;
+    font-size: 2vw;
 }
 
 #homeButton{
@@ -183,9 +183,23 @@ span {
 
 /* When the radio button is checked, add a blue background */
 .containerK input:checked ~ .checkmark {
-    background-color: rgb(255,0,0);
+    background-color: green;
 }
 
+.not-started {
+  background: grey;
+}
+.started {
+  background:yellow;
+}
+
+.ready {
+  background: green;
+}
+.green::before {
+  content: "• ";
+  color: green
+}
 /* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
     content: "";

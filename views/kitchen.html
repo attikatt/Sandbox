@@ -14,29 +14,29 @@
   <div id="mainDiv">
     <div id=leftDiv>
         <div id="topDiv">
-            <h1> <button id=homeButton type="button" onclick="location.href='/staff';"> <img src="images/home.png" alt="Home Button" width=70px/> </button> Beställningar</h1>
+            <h1> <button id=homeButton type="button" onclick="location.href='/staff';"> <img src="images/home.png" alt="Home Button" width=70px/> </button> BESTÄLLNINGAR</h1>
         </div>
         <div id="orderDiv1" class="orderDiv1">
                   <p id = "orderInfo">
                  <order-item-to-prepare
-                    :order-id="key"
-                    :order="activeOrderJuice"
+                    :order-id="activeOrder['juice'].orderId"
+                    :order="activeOrder['juice']"
                     :ui-labels="uiLabels"
                     :lang="lang"
-                    :key="key">
+                    :key="activeOrder['juice'].orderId">
                 </order-item-to-prepare>
               </p>
               <div class = "radioButtons">
                   <label class="containerEP">EJ PÅBÖRJAD
-                    <input type="radio" checked="checked" name="radio1">
+                    <input type="radio" checked="checked" name="radio1" v-on:Click="ejPaborjad('juice','orderDiv1')">
                     <span class="checkmark"></span>
                   </label>
                   <label class="containerP">PÅBÖRJA
-                    <input type="radio" name="radio1">
+                    <input type="radio" name="radio1" v-on:Click="paborjad('juice','orderDiv1')">
                     <span class="checkmark"></span>
                   </label>
                   <label class="containerK">KLAR
-                    <input type="radio" name="radio1">
+                    <input type="radio" name="radio1" v-on:Click="klar('juice','orderDiv1')">
                     <span class="checkmark"></span>
                   </label>
             </div>
@@ -44,24 +44,24 @@
         <div id="orderDiv2" class="orderDiv2">
           <p id = "orderInfo">
          <order-item-to-prepare
-            :order-id="key"
-            :order="activeOrderSmoothie"
+            :order-id="activeOrder['smoothie'].orderId"
+            :order="activeOrder['smoothie']"
             :ui-labels="uiLabels"
             :lang="lang"
-            :key="key">
+            :key="activeOrder['smoothie'].orderId">
         </order-item-to-prepare>
       </p>
       <div class= "radioButtons">
         <label class="containerEP">EJ PÅBÖRJAD
-          <input type="radio" checked="checked" name="radio2">
+          <input type="radio" checked="checked" name="radio2" v-on:Click="ejPaborjad('smoothie','orderDiv2', 'dotted')">
           <span class="checkmark"></span>
         </label>
         <label class="containerP">PÅBÖRJA
-          <input type="radio" name="radio2">
+          <input type="radio" name="radio2" v-on:Click="paborjad('smoothie','orderDiv2')">
           <span class="checkmark"></span>
         </label>
         <label class="containerK">KLAR
-          <input type="radio" name="radio2">
+          <input type="radio" name="radio2" v-on:Click="klar('smoothie','orderDiv2')">
           <span class="checkmark"></span>
         </label>
     </div>
@@ -73,8 +73,9 @@
       <order-list
         v-for="(order, key) in orders"
         v-if="!order.done"
-        v-on:active-order-juice = "activeOrderJuice = order"
-        v-on:active-order-smoothie = "activeOrderSmoothie = order"
+        :class="getActiveOrderStage(order)"
+        v-on:active-order-juice = "activeOrder['juice'] = order"
+        v-on:active-order-smoothie = "activeOrder['smoothie'] = order"
         :order-id="key"
         :order="order"
         :ui-labels="uiLabels"
