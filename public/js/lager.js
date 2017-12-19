@@ -85,18 +85,6 @@ function clearSaldoField(){
     document.getElementById("changeSaldoConsoleChild").innerHTML = saldoLetterList.join("");
 }
 
-function divideIngredientsIntoCategories(){
-  for (var i=0; i<vm.ingredients.length; i++){
-    console.log(vm.ingredients[i].ingredient_en)
-    if (vm.ingredients[i].ingredient_en[0]=== 'a'){
-      vm.ingredients[i].setAttribute('class','A');
-    }
-    if (vm.ingredients[i].ingredient_en[0]=== 'b'){
-      ingredients[i].setAttribute('class','B');
-    }
-  }
-}
-
 function scrollFunction(value){
   //divideIngredientsIntoCategories()
   for (var i=0; i<vm.ingredients.length; i++){
