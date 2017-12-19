@@ -12,14 +12,16 @@ function drawChart() {
   var options = {
     title: 'Distribution of orders',
     pieHole: 0.4,
+    colors: ['blue', 'green'],
     'backgroundColor':'transparent',
-    'titleTextStyle': {color:'white', font: 'champagne__limousinesregular', bold:'false'},
-    legend: {textStyle: {color: 'white'}}
+    'titleTextStyle': {color:'white', fontName: 'champagne__limousinesregular', fontSize:'20', bold:'false'},
+    legend: {textStyle: {color: 'white', fontName: 'champagne__limousinesregular', fontSize:'16'}}
   };
 
   var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
   chart.draw(data, options);
 }
+console.log(sharedVueStuff.Data().getAllOrders());
 
 function updateClock(){
 var now = new Date(),
