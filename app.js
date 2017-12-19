@@ -39,6 +39,16 @@ app.get('/lager', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/lager.html'));
 });
 
+// Serve stats.html as subpage
+app.get('/stats', function (req, res) {
+  res.sendFile(path.join(__dirname, 'views/stats.html'));
+});
+
+// Serve historik.html as subpage
+app.get('/historik', function (req, res) {
+  res.sendFile(path.join(__dirname, 'views/historik.html'));
+});
+
 /*-------------------------------------------------------------------------*/
 
 // Store data in an object to keep the global namespace clean

@@ -1,5 +1,3 @@
-
-
 @font-face {
     font-family: 'champagne__limousinesregular';
     src: url('fonts/champagne/champagne_limousines-webfont.eot');
@@ -31,121 +29,63 @@ body{
 
 #mainDiv{
   height: 97vh;
-  line-height: 97vh;
   width: 99vw;
   text-align: center;
   color: white;
-
 }
 
-h2 {
-    font-size: 3vw;
-}
-
-#topDiv{
-    height: 8vw;
-    font-size: 1.5vw;
-}
-
-#homeButton{
-    float: left;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    border: 0pt;
-    cursor: pointer;
-    overflow: hidden;
-}
-
-span {
-  text-transform: capitalize;
-}
-
-#leftDiv{
-  line-height: normal;
-  float: left;
-  height: 90%;
-  width: 70%;
+#historikHeader{
+  font-size: 3vw;
 }
 
 #rightDiv{
-  line-height: normal;
+  width: 65vw;
+  height: 95vh;
   float: right;
-  height: 90%;
-  width: 28%;
 }
 
-#orderDiv1{
-    float:left;
-    border: 2px dashed white;
-    border-radius: 1vw;
-    height: 70%;
-    margin: 2%;
-    width: 45%;
+.leftDiv{
+  border-right: 1pt solid white;
+  height: 95vh;
 }
 
-#orderInfoHead{
-  margin-top: 3%;
-  margin-bottom: 3%;
-  font-size: 2.5vw;
-  font-weight: bold;
+#leftDiv{
+  width: 30vw;
+  height: 95vh;
+  float: left;
 }
 
-
-
-#orderInfo{
-  text-transform: capitalize;
-  font-size: 2vw;
-
-
+#topDivRight{
+  height: 15%;
 }
 
-#orderDiv2{
-    float:right;
-    border: 2px dashed white;
-    border-radius: 1vw;
-    height: 70%;
-    margin: 2%;
-    width: 45%;
+#topDivLeft{
+  height: 15%;
 }
 
-#orderInfo{
-    display: grid;
-    align-content: center;
-
-}
-
-.smallOrderList{
-	display: grid;
-	grid-template-columns: repeat(auto-fit, 46%);
-  grid-gap: 4%;
-
-}
-
-.smoothie{
-  margin: 4%;
-	border: 2px dotted white;
-  border-radius: 0.5vw;
-	width:90%;
-  padding: 1%;
+#homeButton{
+  float: left;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: 0pt;
   cursor: pointer;
+  overflow: hidden;
+
 }
 
-.juice{
-  margin: 4%;
-	border: 2px solid white;
-  border-radius: 0.5vw;
-	width:90%;
-  padding: 1%;
+#searchButton{
+  float: right;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: 0pt;
   cursor: pointer;
-}
-
-.hightligh{
-  border: 3px solid yellow;
+  overflow: hidden;
 }
 
 #clock{
     font-size: 4vh;
     float: right;
+    margin-bottom: 0;
     margin-top: 60vh;
 }
 

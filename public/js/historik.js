@@ -1,26 +1,4 @@
-/*jslint es5:true, indent: 2 */
-/*global sharedVueStuff, Vue, socket */
 'use strict';
-
-Vue.component('order-item-to-prepare',{
-  props: ['uiLabels', 'order', 'orderId', 'lang'],
-  template: '<div v-show="order.active">\
-          <order-item\
-            :ui-labels="uiLabels"\
-            :lang="lang"\
-            :order-id="orderId"\
-            :order="order"\
-          </order-item>\
-         </div>',
-  methods: {
-    orderDone: function () {
-      this.$emit('done');
-    },
-    cancelOrder: function () {
-
-    }
-  }
-});
 
 Vue.component('order-list',{
   props: ['uiLabels', 'order', 'orderId', 'lang', 'type'],
@@ -43,7 +21,6 @@ Vue.component('order-list',{
              vm.displayChosenDrink(this.order, this.orderId);
              this.active = !this.active;
              this.$emit('activate-order');
-             document.getElementById('insertLine').innerHTML= "<hr>"
            }
         }
 });
@@ -66,22 +43,11 @@ var vm = new Vue({
       for (var i = 0; i < order.ingredients.length; i++){
         ingredientList.push(order.ingredients[i].ingredient_en)
       }
-
-      document.getElementById('orderInfoHead').innerHTML = "#" + orderId +"<br>" + order.type.toUpperCase()
-      /*for (var i=0; i<order.ingredients.length;i++){
-        var canvas = document.getElementById("myCanvas");
-        var ctx=canvas.getContext("2d");
-        ctx.stokeStyle= order.ingredients[i].ingredient_color;
-        console.log(order.ingredients[i].ingredient_color)
-        ctx.rect(20,20,20,20);
-        ctx.stroke();
-      }*/
-      document.getElementById('orderInfo').innerHTML = ingredientList.join('<br>')
-
+        document.getElementById('orderInfoHead').innerHTML = "#" + orderId +"<br>" + order.type.toUpperCase()
+        document.getElementById('orderInfo').innerHTML = ingredientList.join('<br>')
+      }
     }
-    }
-  }
-);
+  });
 
 
 function updateClock(){
