@@ -39,11 +39,17 @@ Vue.component('order-list',{
          },
          methods:{
            setActive: function(){
-             console.log('set order to active')
+             console.log(this.order.type)
              //vm.displayChosenDrink(this.order, this.orderId);
              this.active = !this.active;
-             this.$emit('activate-order');
-             document.getElementById('insertLine').innerHTML= "<hr>"
+             if (this.order.type === "juice"){
+             this.$emit('active-order-juice');
+             }
+             if (this.order.type === "smoothie"){
+             this.$emit('active-order-smoothie');
+             }
+
+             //document.getElementById('insertLine').innerHTML= "<hr>"
            }
         }
 });
@@ -52,11 +58,21 @@ var vm = new Vue({
   el: '#mainDiv',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
   data: {
-    activeOrder: "no order chosen",
+    activeOrderJuice: "no Juice chosen",
+    activeOrderSmoothie: "no Smoothie chosen"
   },
   methods: {
     markDone: function (orderid) {
       socket.emit("orderDone", orderid);
+    },
+    ejPaborjad: function (order){
+      
+    },
+    paborjad: function(){
+
+    },
+    klar: function(){
+
     },
 
     displayChosenDrink: function(order, orderId) {

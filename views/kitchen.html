@@ -20,17 +20,51 @@
                   <p id = "orderInfo">
                  <order-item-to-prepare
                     :order-id="key"
-                    :order="activeOrder"
+                    :order="activeOrderJuice"
                     :ui-labels="uiLabels"
                     :lang="lang"
                     :key="key">
                 </order-item-to-prepare>
               </p>
+              <div class = "radioButtons">
+                  <label class="containerEP">EJ PÅBÖRJAD
+                    <input type="radio" checked="checked" name="radio1">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="containerP">PÅBÖRJA
+                    <input type="radio" name="radio1">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="containerK">KLAR
+                    <input type="radio" name="radio1">
+                    <span class="checkmark"></span>
+                  </label>
+            </div>
         </div>
         <div id="orderDiv2" class="orderDiv2">
-          <p id = "orderInfoHead2"></p>
-          <p id = "insertLine2"></p>
-          <p id = "orderInfo2"></p>
+          <p id = "orderInfo">
+         <order-item-to-prepare
+            :order-id="key"
+            :order="activeOrderSmoothie"
+            :ui-labels="uiLabels"
+            :lang="lang"
+            :key="key">
+        </order-item-to-prepare>
+      </p>
+      <div class= "radioButtons">
+        <label class="containerEP">EJ PÅBÖRJAD
+          <input type="radio" checked="checked" name="radio2">
+          <span class="checkmark"></span>
+        </label>
+        <label class="containerP">PÅBÖRJA
+          <input type="radio" name="radio2">
+          <span class="checkmark"></span>
+        </label>
+        <label class="containerK">KLAR
+          <input type="radio" name="radio2">
+          <span class="checkmark"></span>
+        </label>
+    </div>
         </div>
     </div>
   <div id="rightDiv">
@@ -39,7 +73,8 @@
       <order-list
         v-for="(order, key) in orders"
         v-if="!order.done"
-        v-on:activate-order = "activeOrder = order"
+        v-on:active-order-juice = "activeOrderJuice = order"
+        v-on:active-order-smoothie = "activeOrderSmoothie = order"
         :order-id="key"
         :order="order"
         :ui-labels="uiLabels"

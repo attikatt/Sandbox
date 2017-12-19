@@ -76,11 +76,168 @@ span {
 
 #orderDiv1{
     float:left;
-    border: 2px dashed white;
+    border: 2px solid white;
     border-radius: 1vw;
-    height: 70%;
+    height: 80%;
     margin: 2%;
     width: 45%;
+}
+
+/* The container */
+.containerEP {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    margin-left: 2vw;
+    text-align: left;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.containerEP input {
+    position: absolute;
+    opacity: 0;
+}
+
+.containerP {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    margin-left: 2vw;
+    text-align: left;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.containerP input {
+    position: absolute;
+    opacity: 0;
+}
+
+.containerK {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    margin-left: 2vw;
+    text-align: left;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.containerK input {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.containerEP:hover input ~ .checkmark {
+    background-color: grey;
+}
+
+/* When the radio button is checked, add a blue background */
+.containerEP input:checked ~ .checkmark {
+    background-color: white;
+}
+
+.containerP:hover input ~ .checkmark {
+    background-color: grey;
+}
+
+/* When the radio button is checked, add a blue background */
+.containerP input:checked ~ .checkmark {
+    background-color: rgb(255,215,0);
+}
+
+.containerK:hover input ~ .checkmark {
+    background-color: grey;
+}
+
+/* When the radio button is checked, add a blue background */
+.containerK input:checked ~ .checkmark {
+    background-color: rgb(255,0,0);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.containerEP input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.containerEP .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: grey;
+}
+
+.containerP input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.containerP .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.containerK input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.containerK .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.radioButtons{
+
 }
 
 #orderInfoHead{
@@ -103,7 +260,7 @@ span {
     float:right;
     border: 2px dashed white;
     border-radius: 1vw;
-    height: 70%;
+    height: 80%;
     margin: 2%;
     width: 45%;
 }

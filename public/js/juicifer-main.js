@@ -7,7 +7,7 @@ var socket = io();
 
 Vue.component('order-item', {
   props: ['uiLabels', 'order', 'orderId', 'lang'],
-  template: '<div> {{orderId}} </br> {{order.type}} </br> <hr> </br> {{uiLabels.ingredients}}: {{ order.ingredients.map(item=>item["ingredient_"+ lang])  }} </div>'
+  template: '<div> {{orderId}} </br> {{order.type}} </br> <hr> </br> {{uiLabels.ingredients}}: <br> {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join() }}</div>'
 });
 
 Vue.component('order-item-short',{
