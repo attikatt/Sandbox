@@ -4,12 +4,12 @@
 
 Vue.component('order-item-to-prepare',{
   props: ['uiLabels', 'order', 'orderId', 'lang'],
-  template: '<div v-show="order.active">\
+  template: '<div>\
           <order-item\
             :ui-labels="uiLabels"\
             :lang="lang"\
             :order-id="orderId"\
-            :order="order"\
+            :order="order">\
           </order-item>\
          </div>',
   methods: {
@@ -40,7 +40,7 @@ Vue.component('order-list',{
          methods:{
            setActive: function(){
              console.log('set order to active')
-             vm.displayChosenDrink(this.order, this.orderId);
+             //vm.displayChosenDrink(this.order, this.orderId);
              this.active = !this.active;
              this.$emit('activate-order');
              document.getElementById('insertLine').innerHTML= "<hr>"

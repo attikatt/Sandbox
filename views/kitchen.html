@@ -17,19 +17,15 @@
             <h1> <button id=homeButton type="button" onclick="location.href='/staff';"> <img src="images/home.png" alt="Home Button" width=70px/> </button> Beställningar</h1>
         </div>
         <div id="orderDiv1" class="orderDiv1">
-                  <p id = "orderInfoHead"></p>
-                  <p id = "insertLine"></p>
-                  <p id = "orderInfo"></p>
+                  <p id = "orderInfo">
                  <order-item-to-prepare
-                    v-for="(order, key) in orders"
-                    v-if="!order.done"
-                    v-on:activate-order = "activeOrder = order"
                     :order-id="key"
-                    :order="order"
+                    :order="activeOrder"
                     :ui-labels="uiLabels"
                     :lang="lang"
                     :key="key">
                 </order-item-to-prepare>
+              </p>
         </div>
         <div id="orderDiv2" class="orderDiv2">
           <p id = "orderInfoHead2"></p>
