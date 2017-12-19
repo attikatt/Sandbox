@@ -18,7 +18,7 @@
         </div>
         <div id="orderDiv1" class="orderDiv1">
                   <p id = "orderInfoHead"></p>
-                  <hr>
+                  <p id = "insertLine"></p>
                   <p id = "orderInfo"></p>
                  <order-item-to-prepare
                     v-for="(order, key) in orders"
@@ -32,17 +32,13 @@
                 </order-item-to-prepare>
         </div>
         <div id="orderDiv2" class="orderDiv2">
-            <div class="orderInfo">
-                <div class="orderHead">
-                </div>
-                <div class="orderIngredients">
-                </div>
-            </div>
+          <p id = "orderInfoHead2"></p>
+          <p id = "insertLine2"></p>
+          <p id = "orderInfo2"></p>
         </div>
     </div>
   <div id="rightDiv">
   <div id="orders">
-    <h2> Orders </h2>
     <div class="smallOrderList">
       <order-list
         v-for="(order, key) in orders"

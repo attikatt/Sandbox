@@ -23,8 +23,8 @@ Vue.component('order-item-to-prepare',{
 });
 
 Vue.component('order-list',{
-  props: ['uiLabels', 'order', 'orderId', 'lang'],
-  template: '<div v-bind:class="order.type" v-on:click ="setActive()" v-show ="!active">\
+  props: ['uiLabels', 'order', 'orderId', 'lang', 'type'],
+  template: '<div v-bind:class="order.type" v-on:click ="setActive()">\
           <order-item-short\
             :ui-labels="uiLabels"\
             :lang="lang"\
@@ -40,16 +40,14 @@ Vue.component('order-list',{
          methods:{
            setActive: function(){
              console.log('set order to active')
-             vm.ordersActiveCommunicate(this.order, this.orderId);
+             vm.displayChosenDrink(this.order, this.orderId);
+
              this.active = !this.active;
              this.$emit('activate-order');
+             document.getElementById('insertLine').innerHTML= "<hr>"
            }
         }
 });
-
-
-
-
 
 var vm = new Vue({
   el: '#mainDiv',
@@ -61,7 +59,9 @@ var vm = new Vue({
     markDone: function (orderid) {
       socket.emit("orderDone", orderid);
     },
-    ordersActiveCommunicate: function(order, orderId) {
+
+    displayChosenDrink: function(order, orderId) {
+
       var ingredientList =[]
       var ingred = []
       for (var i = 0; i < order.ingredients.length; i++){
@@ -78,7 +78,8 @@ var vm = new Vue({
         ctx.stroke();
       }*/
       document.getElementById('orderInfo').innerHTML = ingredientList.join('<br>')
-      }
+
+    }
     }
   }
 );

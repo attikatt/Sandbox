@@ -137,6 +137,10 @@ span {
   cursor: pointer;
 }
 
+.hightligh{
+  border: 3px solid yellow;
+}
+
 #clock{
     font-size: 4vh;
     float: right;
