@@ -16,6 +16,14 @@
       <div id="topDivLeft">
           <button id=homeButton type="button" onclick="location.href='/staff';"> <img src="images/home.png" alt="Home Button" width=70px/> </button>
       </div>
+      <p id = "orderInfo">
+      <order-item-to-prepare
+        :order-id="activeOrder.orderId"
+        :order="activeOrder"
+        :ui-labels="uiLabels"
+        :lang="lang">
+     </order-item-to-prepare>
+  </p>
     </div>
     <div id="rightDiv">
       <div id="topDivRight">
@@ -57,7 +65,7 @@
           <button class=letterButton type="button" onClick="clearSaldoField()"><li class="clearl delete">X</li></button>
           <input type="button" onClick="numberPressed(this)" id =letterButton class=letterButton value="0">
           <button class=letterButton type="button" value="backSpaceLetter" onClick="backSpaceLetter()"><li class="remove"><</li></button>
-          <button class=letterButtonEnter type="button" v-on:Click="updateChosen()"><li class="return clearl enter">SÖK</li></button>
+          <button class=letterButtonEnter type="button" v-on:Click="searchForOrder()"><li class="return clearl enter">SÖK</li></button>
       </ul>
     </div>
     </div>

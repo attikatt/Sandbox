@@ -1,5 +1,25 @@
 'use strict';
 
+Vue.component('order-item-to-prepare',{
+  props: ['uiLabels', 'order', 'orderId', 'lang'],
+  template: '<div>\
+          <order-item\
+            :ui-labels="uiLabels"\
+            :lang="lang"\
+            :order-id="orderId"\
+            :order="order">\
+          </order-item>\
+         </div>',
+  methods: {
+    orderDone: function () {
+      this.$emit('done');
+    },
+    cancelOrder: function () {
+
+    }
+  }
+});
+
 Vue.component('order-list',{
   props: ['uiLabels', 'order', 'orderId', 'lang', 'type'],
   template: '<div v-bind:class="order.type" v-on:click ="setActive()">\
@@ -17,7 +37,6 @@ Vue.component('order-list',{
          },
          methods:{
            setActive: function(){
-             console.log('set order to active')
              vm.displayChosenDrink(this.order, this.orderId);
              this.active = !this.active;
              this.$emit('activate-order');
@@ -43,8 +62,11 @@ var vm = new Vue({
       for (var i = 0; i < order.ingredients.length; i++){
         ingredientList.push(order.ingredients[i].ingredient_en)
       }
-        document.getElementById('orderInfoHead').innerHTML = "#" + orderId +"<br>" + order.type.toUpperCase()
-        document.getElementById('orderInfo').innerHTML = ingredientList.join('<br>')
+        //document.getElementById('orderInfoHead').innerHTML = "#" + orderId +"<br>" + order.type.toUpperCase()
+        //document.getElementById('orderInfo').innerHTML = ingredientList.join('<br>')
+      },
+      searchForOrder: function(){
+        console.log(orderNumSearch);
       }
     }
   });
@@ -89,25 +111,25 @@ setTimeout(updateClock,1000);
      }
  }
 
-var saldo = '';
- var saldoLetterList = [];
+var orderNumSearch = '';
+ var numLetterList = [];
 
  function numberPressed(letterButton){
      var letterButton = letterButton.value;
-     saldoLetterList.push(letterButton);
-     saldo = '';
-     for (var i =0; i < saldoLetterList.length; i++){
-       saldo = Number(saldo + saldoLetterList[i]);
+     numLetterList.push(letterButton);
+     orderNumSearch = '';
+     for (var i =0; i < numLetterList.length; i++){
+       orderNumSearch = Number(orderNumSearch + numLetterList[i]);
      };
-     document.getElementById("changeSaldoConsoleChild").innerHTML = saldoLetterList.join("");
+     document.getElementById("changeSaldoConsoleChild").innerHTML = numLetterList.join("");
  }
 
  function backSpaceLetter(){
-     saldoLetterList.pop();
-     document.getElementById("changeSaldoConsoleChild").innerHTML = saldoLetterList.join("");
+     numLetterList.pop();
+     document.getElementById("changeSaldoConsoleChild").innerHTML = numLetterList.join("");
  }
 
  function clearSaldoField(){
-     saldoLetterList = [];
-     document.getElementById("changeSaldoConsoleChild").innerHTML = saldoLetterList.join("");
+     numLetterList = [];
+     document.getElementById("changeSaldoConsoleChild").innerHTML = numLetterList.join("");
  }

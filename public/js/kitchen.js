@@ -40,6 +40,7 @@ Vue.component('order-list',{
          methods:{
            setActive: function(){
              this.active = !this.active;
+             console.log(this.active);
              if (this.order.type === "juice"){
                this.$emit('active-order-juice');
              }
@@ -78,6 +79,7 @@ var vm = new Vue({
       document.getElementById(orderDiv).style.border = "2pt " + style + " white";
       this.activeOrderStage[type] = "not-started";
       order.done = true;
+      vm.ejPaborjad(type,orderDiv,style);
 
     },
 

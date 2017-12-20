@@ -97,6 +97,11 @@ span {
     align-content: center;
 }
 
+hr{
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
 /*-------------------SÄTTER FÄRG PÅ INGREDIENSRUTORNA----------------*/
 .green {
   list-style-type: square;
