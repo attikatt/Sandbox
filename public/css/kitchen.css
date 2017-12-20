@@ -83,6 +83,112 @@ span {
     width: 45%;
 }
 
+#orderDiv2{
+    float:right;
+    border: 2px dashed white;
+    border-radius: 1vw;
+    height: 80%;
+    margin: 2%;
+    width: 45%;
+}
+
+#orderInfo{
+    display: grid;
+    align-content: center;
+}
+
+/*-------------------SÄTTER FÄRG PÅ INGREDIENSRUTORNA----------------*/
+.green {
+  list-style-type: square;
+  text-align: left;
+  color: green;
+  font-size: 3vw;
+}
+
+.brown {
+  list-style-type: square;
+  text-align: left;
+  color: brown;
+  font-size: 3vw;
+}
+
+.white {
+  list-style-type: square;
+  text-align: left;
+  color: white;
+  font-size: 3vw;
+}
+
+.yellow {
+  list-style-type: square;
+  text-align: left;
+  color: yellow;
+  font-size: 3vw;
+}
+
+.red {
+  list-style-type: square;
+  text-align: left;
+  color: red;
+  font-size: 3vw;
+}
+
+.blue {
+  list-style-type: square;
+  text-align: left;
+  color: blue;
+  font-size: 3vw;
+}
+
+.orange {
+  list-style-type: square;
+  text-align: left;
+  color: orange;
+  font-size: 3vw;
+}
+
+.black {
+  list-style-type: square;
+  text-align: left;
+  color: black;
+  font-size: 3vw;
+}
+
+.pink {
+  list-style-type: square;
+  text-align: left;
+  color: pink;
+  font-size: 3vw;
+}
+
+.purple {
+  list-style-type: square;
+  text-align: left;
+  color: purple;
+  font-size: 3vw;
+}
+
+.lightblue {
+  list-style-type: square;
+  text-align: left;
+  color: lightblue;
+  font-size: 3vw;
+}
+
+.green {
+  list-style-type: square;
+  text-align: left;
+  color: green;
+  font-size: 3vw;
+}
+
+/*-----------Färglägger texten till vit i ingredienslistan-------------*/
+li span{
+  color:white;
+  font-size: 2vw;
+}
+
+/*--------------SKAPAR RADIO KNAPPARNA--------------------*/
 /* The container */
 .containerEP {
     display: block;
@@ -186,20 +292,6 @@ span {
     background-color: green;
 }
 
-.not-started {
-  background: grey;
-}
-.started {
-  background:yellow;
-}
-
-.ready {
-  background: green;
-}
-.green::before {
-  content: "• ";
-  color: green
-}
 /* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
     content: "";
@@ -250,40 +342,7 @@ span {
 	background: white;
 }
 
-.radioButtons{
-
-}
-
-#orderInfoHead{
-  margin-top: 3%;
-  margin-bottom: 3%;
-  font-size: 2.5vw;
-  font-weight: bold;
-}
-
-
-
-#orderInfo{
-  text-transform: capitalize;
-  font-size: 2vw;
-
-
-}
-
-#orderDiv2{
-    float:right;
-    border: 2px dashed white;
-    border-radius: 1vw;
-    height: 80%;
-    margin: 2%;
-    width: 45%;
-}
-
-#orderInfo{
-    display: grid;
-    align-content: center;
-
-}
+/*--------- SMALL ORDER LIST ---------*/
 
 .smallOrderList{
 	display: grid;
@@ -312,6 +371,25 @@ span {
 
 .hightligh{
   border: 3px solid yellow;
+}
+
+/*-----Sätter färg på short-item-list vid tryck på radioknapparna------*/
+.not-started {
+  background: transparent;
+}
+.started {
+  background: rgb(255, 204, 0);
+}
+
+.ready {
+  background: rgb(0, 153, 0);
+}
+
+.headOrderInfo{
+  text-transform: capitalize;
+  font-size: 2.5vw;
+  margin-top: 0.5vh;
+  margin-bottom: 0.5vh;
 }
 
 #clock{
