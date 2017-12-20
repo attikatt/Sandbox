@@ -1,5 +1,5 @@
 'use strict';
-
+/*-------------------Klocka------------*/
 function updateClock(){
 var now = new Date(),
     hours = now.getHours(),
@@ -13,6 +13,8 @@ setTimeout(updateClock,1000);
 }
  updateClock();
 
+ /*-------------------VueData------------*/
+
  var dataVm = new Vue({
    el: '#VueDiv',
    mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
@@ -21,11 +23,12 @@ setTimeout(updateClock,1000);
      amountJuices: 0
    },
    methods: {
-     createOrderData: function() {
-      // console.log(this.orders[1].type);
-       //console.log(this.orders)
-     for (var i = 1; i < 4; i += 1) {
-       console.log(i + " " + this.orders[i].type);
+     getOrderData: function() {
+      //console.log(this.orders[1].ingredients.length);
+      // console.log(this.orders.hasOwnProperty('length'))
+     for (var i = 1; i < 3; i += 1) {
+       //console.log(i + " " + this.orders[i].type);
+       //console.log(this.orders[i]);
        if (this.orders[i].type === 'juice'){
          this.amountJuices += 1;
        }
@@ -38,21 +41,38 @@ setTimeout(updateClock,1000);
        ['Smoothie',     this.amountSmoothies],
        ['Juice',      this.amountJuices]
      ])
+   },
+   getIngredientData: function (){
+     var contentArr = [
+       ['Ingredient', 'Amount ordered'],
+       ['Pear',     5],
+       ['Orange',   2]
+     ];
+     for (var i = 1; i < 2; i += 1) {
+       //console.log(this.orders[i].ingredients)
+       //console.log(contentArr[i]);
+       //console.log("Order "+i);
+      for(var j =0; j < (this.orders[i].ingredients.length); j+=1){
+            console.log(this.orders[i].ingredients[j].ingredient_en);
+         for (var i = 0; i< contentArr.length; i+=1){
+           //console.log(contentArr[i]);
+         }
+     }
    }
+     return (contentArr)
+   }
+
  }
 });
 
+/*-------------------Grafer------------*/
+
 google.charts.load("current", {packages:["corechart"]});
 google.charts.setOnLoadCallback(drawChart);
+//dataVm.createData();
 function drawChart() {
-  var data = google.visualization.arrayToDataTable(dataVm.createOrderData()/*[
-    ['Type of drink', 'Amount ordered'],
-    ['Smoothie',     11],
-    ['Juice',      2]
-  ]*/);
-  //dataVm.createData();
-
-  var options = {
+  var orderData = google.visualization.arrayToDataTable(dataVm.getOrderData());
+  var orderOptions = {
     title: 'Distribution of orders',
     pieHole: 0.4,
     colors: ['blue', 'green'],
@@ -61,6 +81,20 @@ function drawChart() {
     legend: {textStyle: {color: 'white', fontName: 'champagne__limousinesregular', fontSize:'16'}}
   };
 
-  var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-  chart.draw(data, options);
+  var ingredientData = google.visualization.arrayToDataTable(dataVm.getIngredientData());
+  var ingredientOptions = {
+    title: 'Distribution of ordered ingredients',
+    pieHole: 0.4,
+    colors: ['hotpink', 'limegreen', 'purple', 'yellow','orange'],
+    'backgroundColor':'transparent',
+    'titleTextStyle': {color:'white', fontName: 'champagne__limousinesregular', fontSize:'20', bold:'false'},
+    legend: {textStyle: {color: 'white', fontName: 'champagne__limousinesregular', fontSize:'16'}}
+  };
+
+
+  var chart1 = new google.visualization.PieChart(document.getElementById('donutchartOrders'));
+  chart1.draw(orderData, orderOptions);
+
+  var chart2 = new google.visualization.PieChart(document.getElementById('donutchartIngred'));
+  chart2.draw(ingredientData, ingredientOptions);
 }

@@ -40,9 +40,17 @@ h1{
 	letter-spacing: 2pt;
 }
 
-#donutchart{
-  width: 50vw;
+.donut{
+  width: 45vw;
   height: 60vh;
+}
+
+#donutchartIngred{
+  float: right;
+}
+
+#donutchartOrders{
+  float: left;
 }
 
 #homeButton{
