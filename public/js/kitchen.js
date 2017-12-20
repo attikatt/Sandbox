@@ -39,8 +39,6 @@ Vue.component('order-list',{
          },
          methods:{
            setActive: function(){
-             console.log(this.order.type)
-             //vm.displayChosenDrink(this.order, this.orderId);
              this.active = !this.active;
              if (this.order.type === "juice"){
              this.$emit('active-order-juice');
@@ -48,8 +46,6 @@ Vue.component('order-list',{
              if (this.order.type === "smoothie"){
              this.$emit('active-order-smoothie');
              }
-
-             //document.getElementById('insertLine').innerHTML= "<hr>"
            }
         }
 });
@@ -61,14 +57,6 @@ var vm = new Vue({
     activeOrder: {juice: "no Juice chosen", smoothie:"no Smoothie chosen" },
     activeOrderStage: {juice: "not-started", smoothie: "not-started" }
   },
-  // computed: {
-  //   activeOrderJuiceStage: function(order) {
-  //     if (this.activeOrderJuice == order)
-  //       return {"started"};
-  //     else
-  //       return {"not_started"};
-  //   }
-  // },
   methods: {
     getActiveOrderStage: function(order) {
         if (this.activeOrder[order.type] == order)
@@ -80,15 +68,14 @@ var vm = new Vue({
     ejPaborjad: function (type,orderDiv,style){
       this.activeOrderStage[type] = "not-started";
       document.getElementById(orderDiv).style.border = "3pt " + style + " white";
-
     },
-    paborjad: function(type,orderDiv){
+    paborjad: function(type,orderDiv,style){
       this.activeOrderStage[type] = "started";
-      document.getElementById(orderDiv).style.border = "3pt dotted yellow"
+      document.getElementById(orderDiv).style.border = "3pt " + style + " yellow";
     },
-    klar: function(type,orderDiv){
+    klar: function(type,orderDiv,style){
       this.activeOrderStage[type] = "ready";
-      document.getElementById(orderDiv).style.border = "3pt dotted green"
+      document.getElementById(orderDiv).style.border = "3pt " + style + " green";
     },
 
     displayChosenDrink: function(order, orderId) {

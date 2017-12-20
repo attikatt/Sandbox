@@ -7,7 +7,7 @@ var socket = io();
 
 Vue.component('order-item', {
   props: ['uiLabels', 'order', 'orderId', 'lang'],
-  template: '<div>{{orderId}} </br> {{order.type}} </br> <hr> </br> {{uiLabels.ingredients}}: <ul> <li v-for="item in order.ingredients" :class="item.ingredient_color">{{item["ingredient_" + lang]}} </li></ul></div>'
+  template: '<div><p class="headOrderInfo">{{orderId}}{{order.type}}</p> </br> <hr> <ul> <li v-for="item in order.ingredients" :class="item.ingredient_color"><span>{{item["ingredient_" + lang]}}</span> </li></ul></div>'
 });
 
 Vue.component('order-item-short',{
