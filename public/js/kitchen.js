@@ -40,7 +40,6 @@ Vue.component('order-list',{
          methods:{
            setActive: function(){
              this.active = !this.active;
-             console.log(this.active);
              if (this.order.type === "juice"){
                this.$emit('active-order-juice');
              }
@@ -79,7 +78,8 @@ var vm = new Vue({
       this.activeOrderStage[type] = "not-started";
       order.done = true;
       document.getElementById(button).checked = true;
-      
+      vm.markDone(order.orderId);
+
     },
 
     displayChosenDrink: function(order, orderId) {
@@ -96,7 +96,6 @@ var vm = new Vue({
     }
   }
 );
-
 
 function updateClock(){
 var now = new Date(),

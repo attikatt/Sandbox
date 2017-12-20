@@ -18,10 +18,13 @@
       </div>
       <p id = "orderInfo">
       <order-item-to-prepare
-        :order-id="activeOrder.orderId"
+        v-for="(order, key) in orders"
+        v-if="activeOrder == order"
+        :order-id="key"
         :order="activeOrder"
         :ui-labels="uiLabels"
-        :lang="lang">
+        :lang="lang"
+        :key="key">
      </order-item-to-prepare>
   </p>
     </div>
@@ -34,7 +37,7 @@
       <div class="smallOrderList">
         <order-list
           v-for="(order, key) in orders"
-          v-if="!order.done"
+          v-if="order.done"
           v-on:activate-order = "activeOrder = order"
           :order-id="key"
           :order="order"

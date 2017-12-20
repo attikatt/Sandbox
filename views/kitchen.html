@@ -19,11 +19,13 @@
         <div id="orderDiv1" class="orderDiv1">
                   <p id = "orderInfo">
                  <order-item-to-prepare
-                    :order-id="activeOrder['juice'].orderId"
+                    v-for="(order,key) in orders"
+                    v-if="!order.done && activeOrder['juice'] == order"
+                    :order-id="key"
                     :order="activeOrder['juice']"
                     :ui-labels="uiLabels"
                     :lang="lang"
-                    :key="activeOrder['juice'].orderId">
+                    :key="key">
                 </order-item-to-prepare>
               </p>
         </div>
@@ -44,11 +46,13 @@
         <div id="orderDiv2" class="orderDiv2">
           <p id = "orderInfo">
          <order-item-to-prepare
-            :order-id="activeOrder['smoothie'].orderId"
+            v-for="(order,key) in orders"
+            v-if="!order.done && activeOrder['smoothie'] == order"
+            :order-id="key"
             :order="activeOrder['smoothie']"
             :ui-labels="uiLabels"
             :lang="lang"
-            :key="activeOrder['smoothie'].orderId">
+            :key="key">
         </order-item-to-prepare>
       </p>
 
