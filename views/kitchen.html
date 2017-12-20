@@ -29,7 +29,7 @@
         </div>
         <div class = "radioButtons1">
             <label class="containerEP">EJ PÅBÖRJAD
-              <input type="radio" checked="checked" name="radio1" v-on:Click="ejPaborjad('juice','orderDiv1', 'solid')">
+              <input id="notDone1" type="radio" checked="checked" name="radio1" v-on:Click="ejPaborjad('juice','orderDiv1', 'solid')">
               <span class="checkmark"></span>
             </label>
             <label class="containerP">PÅBÖRJA
@@ -37,7 +37,7 @@
               <span class="checkmark"></span>
             </label>
             <label class="containerK">KLAR
-              <input type="radio" name="radio1" v-on:Click="klar(activeOrder['juice'],'juice','orderDiv1', 'solid')">
+              <input type="radio" name="radio1" v-on:Click="klar(activeOrder['juice'],'juice','orderDiv1', 'solid','notDone1')">
               <span class="checkmark"></span>
             </label>
       </div>
@@ -55,7 +55,7 @@
         </div>
         <div class= "radioButtons2">
           <label class="containerEP">EJ PÅBÖRJAD
-            <input type="radio" checked="checked" name="radio2" v-on:Click="ejPaborjad('smoothie','orderDiv2', 'dashed')">
+            <input id="notDone2" type="radio" checked="checked" name="radio2" v-on:Click="ejPaborjad('smoothie','orderDiv2', 'dashed')">
             <span class="checkmark"></span>
           </label>
           <label class="containerP">PÅBÖRJA
@@ -63,7 +63,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="containerK">KLAR
-            <input type="radio" name="radio2" v-on:Click="klar(activeOrder['smoothie'],'smoothie','orderDiv2', 'dashed')">
+            <input type="radio" name="radio2" v-on:Click="klar(activeOrder['smoothie'],'smoothie','orderDiv2', 'dashed','notDone2')">
             <span class="checkmark"></span>
           </label>
       </div>

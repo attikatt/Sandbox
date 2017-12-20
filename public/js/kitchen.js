@@ -74,11 +74,11 @@ var vm = new Vue({
       this.activeOrderStage[type] = "started";
       document.getElementById(orderDiv).style.border = "2pt " + style + " yellow";
     },
-    klar: function(order,type,orderDiv,style){
-      document.getElementById(orderDiv).innerHTML = '';
+    klar: function(order,type,orderDiv,style,button){
       document.getElementById(orderDiv).style.border = "2pt " + style + " white";
       this.activeOrderStage[type] = "not-started";
       order.done = true;
+      document.getElementById(button).checked = true;
 
     },
 
@@ -91,16 +91,7 @@ var vm = new Vue({
       }
 
       document.getElementById('orderInfoHead').innerHTML = "#" + orderId +"<br>" + order.type.toUpperCase()
-      /*for (var i=0; i<order.ingredients.length;i++){
-        var canvas = document.getElementById("myCanvas");
-        var ctx=canvas.getContext("2d");
-        ctx.stokeStyle= order.ingredients[i].ingredient_color;
-        console.log(order.ingredients[i].ingredient_color)
-        ctx.rect(20,20,20,20);
-        ctx.stroke();
-      }*/
       document.getElementById('orderInfo').innerHTML = ingredientList.join('<br>')
-
     }
     }
   }
