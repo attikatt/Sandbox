@@ -79,7 +79,7 @@ var vm = new Vue({
       this.activeOrderStage[type] = "not-started";
       order.done = true;
       document.getElementById(button).checked = true;
-
+      
     },
 
     displayChosenDrink: function(order, orderId) {
