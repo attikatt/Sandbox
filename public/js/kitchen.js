@@ -41,10 +41,10 @@ Vue.component('order-list',{
            setActive: function(){
              this.active = !this.active;
              if (this.order.type === "juice"){
-             this.$emit('active-order-juice');
+               this.$emit('active-order-juice');
              }
              if (this.order.type === "smoothie"){
-             this.$emit('active-order-smoothie');
+               this.$emit('active-order-smoothie');
              }
            }
         }
@@ -54,7 +54,7 @@ var vm = new Vue({
   el: '#mainDiv',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
   data: {
-    activeOrder: {juice: "no Juice chosen", smoothie:"no Smoothie chosen" },
+    activeOrder: {juice: "no Juice chosen", smoothie:"no Smoothie chosen"},
     activeOrderStage: {juice: "not-started", smoothie: "not-started" }
   },
   methods: {
@@ -67,15 +67,18 @@ var vm = new Vue({
     },
     ejPaborjad: function (type,orderDiv,style){
       this.activeOrderStage[type] = "not-started";
-      document.getElementById(orderDiv).style.border = "3pt " + style + " white";
+      document.getElementById(orderDiv).style.border = "2pt " + style + " white";
     },
     paborjad: function(type,orderDiv,style){
       this.activeOrderStage[type] = "started";
-      document.getElementById(orderDiv).style.border = "3pt " + style + " yellow";
+      document.getElementById(orderDiv).style.border = "2pt " + style + " yellow";
     },
-    klar: function(type,orderDiv,style){
-      this.activeOrderStage[type] = "ready";
-      document.getElementById(orderDiv).style.border = "3pt " + style + " green";
+    klar: function(order,type,orderDiv,style){
+      document.getElementById(orderDiv).innerHTML = '';
+      document.getElementById(orderDiv).style.border = "2pt " + style + " white";
+      this.activeOrderStage[type] = "not-started";
+      order.done = true;
+
     },
 
     displayChosenDrink: function(order, orderId) {

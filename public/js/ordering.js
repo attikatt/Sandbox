@@ -47,6 +47,7 @@ var vm = new Vue({
       this.type = type;
     },
     placeOrder: function () {
+      console.log(this);
       var i,
       //Wrap the order in an object
         order = {
