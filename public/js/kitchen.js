@@ -79,7 +79,6 @@ var vm = new Vue({
       document.getElementById(orderDiv).style.border = "2pt " + style + " white";
       this.activeOrderStage[type] = "not-started";
       order.done = true;
-      vm.ejPaborjad(type,orderDiv,style);
 
     },
 
