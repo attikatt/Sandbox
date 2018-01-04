@@ -10,7 +10,7 @@ Vue.component('ingredient', {
                   <label id="ing_stock">\
                   {{item.stock}}\
                   </label>\
-              </div>', //sätt lang = sv i main istället 
+              </div>', //sätt lang = sv i main istället
     data: function(){
     return{
     chosen: false
@@ -84,11 +84,25 @@ function clearSaldoField(){
 
 function scrollFunction(value){
   //divideIngredientsIntoCategories()
-  for (var i=0; i<vm.ingredients.length; i++){
-    if (vm.ingredients[i].ingredient_sv[0].toUpperCase() === value){
+  var numericValue = (parseInt(value, 36)-9);
+  for (var i = 0; i < vm.ingredients.length; i++){
+    if ((parseInt(vm.ingredients[i].ingredient_sv[0].toUpperCase(), 36)-9)===numericValue){
       var element = document.getElementById(vm.ingredients[i].ingredient_id);
       element.scrollIntoView();
       break;
     }
-}
+    else if ((parseInt(vm.ingredients[i].ingredient_sv[0].toUpperCase(), 36)-9)>numericValue){
+      var element = document.getElementById(vm.ingredients[i-1].ingredient_id);
+      element.scrollIntoView();
+      break;
+    }
+
+  }
+  /*
+  for (var i=0; i<vm.ingredients.length; i++){
+    if ((parseInt(vm.ingredients[i].ingredient_sv[0].toUpperCase(), 36)-9) === numericValue){
+      var element = document.getElementById(vm.ingredients[i].ingredient_id);
+      element.scrollIntoView();
+      break;
+    } */
 }
