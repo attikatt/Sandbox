@@ -83,27 +83,23 @@ function clearSaldoField(){
 }
 
 function scrollFunction(value){
-  //divideIngredientsIntoCategories()
+
   var numericValue = (parseInt(value, 36)-9);
-  console.log(parseInt('Ä',36)-9);
-  for (var i = 0; i < vm.ingredients.length; i++){
+  var i = '';
+  for (i = 0; i < vm.ingredients.length; i++){
     if ((parseInt(vm.ingredients[i].ingredient_sv[0].toUpperCase(), 36)-9)===numericValue){
+      console.log("Ifsats");
       var element = document.getElementById(vm.ingredients[i].ingredient_id);
       element.scrollIntoView();
       break;
-    }
-    else if ((parseInt(vm.ingredients[i].ingredient_sv[0].toUpperCase(), 36)-9) > numericValue){
+    } else if ((parseInt(vm.ingredients[i].ingredient_sv[0].toUpperCase(), 36)-9) > numericValue){
       var element = document.getElementById(vm.ingredients[i-1].ingredient_id);
       element.scrollIntoView();
       break;
-    }
-
-  }
-  /*
-  for (var i=0; i<vm.ingredients.length; i++){
-    if ((parseInt(vm.ingredients[i].ingredient_sv[0].toUpperCase(), 36)-9) === numericValue){
+    } else { //vet inte hur hållbar denna lösning är, men den fungerar för denna situation
       var element = document.getElementById(vm.ingredients[i].ingredient_id);
       element.scrollIntoView();
-      break;
-    } */
+    }
+  }
+
 }
