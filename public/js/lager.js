@@ -21,13 +21,9 @@ Vue.component('ingredient', {
             vm.unmarkOtherIngredients();
             this.chosen = !this.chosen;
             this.$emit('ingredientchosen');
-            console.log("putToChosen");
-//refs -föräldrar kan inte komma åt barnelements datastrukturer
           }
-        } //emit
-});
-
-var saldo = '';
+        }
+});//refs($)- föräldrar kan inte komma åt barnelements datastrukturer
 
 var vm = new Vue({
   el: '#lagerDiv',
@@ -38,11 +34,12 @@ var vm = new Vue({
   },
   methods: {
     updateChosen: function() {
+      var saldo = Number(saldoLetterList.join(''))
+      if (saldoLetterList.length > 0){
       socket.emit('updateStock', {ingredient:this.chosenIng}, saldo)
+      vm.chosenIng.stock = saldo; 
       clearSaldoField()
-      console.log("updateChosen")
-      console.log("Saldo: " + saldo)
-      console.log("Stock: " + this.chosenIng.stock)
+    }
       //socket emit (meddelande till servern) updateStock,{ingredients:[chosenIng]+skicka med amount}
     },
     unmarkOtherIngredients: function() {
@@ -69,15 +66,10 @@ setTimeout(updateClock,1000);
 var saldoLetterList = [];
 
 function numberPressed(letterButton){
-    if (vm.chosenIng != "No ingredient chosen");
+    if (vm.chosenIng == "No ingredient chosen");
     var letterButton = letterButton.value;
     saldoLetterList.push(letterButton);
-    saldo = '';
-    for (var i =0; i < saldoLetterList.length; i++){
-      saldo = Number(saldo + saldoLetterList[i]);
-    };
     document.getElementById("changeSaldoConsoleChild").innerHTML = saldoLetterList.join("");
-    console.log("numberPressed");
 }
 
 function backSpaceLetter(){
@@ -88,8 +80,6 @@ function backSpaceLetter(){
 function clearSaldoField(){
     saldoLetterList = [];
     document.getElementById("changeSaldoConsoleChild").innerHTML = saldoLetterList.join("");
-    console.log("clearSaldoField");
-    console.log(saldo);
 }
 
 function scrollFunction(value){
