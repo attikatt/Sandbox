@@ -149,6 +149,10 @@ Data.prototype.markOrderDone = function (orderId) {
   this.orders[orderId].done = true;
 };
 
+Data.prototype.markOrderNotDone = function (orderId) {
+  this.orders[orderId].done = false;
+};
+
 /*-------------------------------------------------------------------------*/
 
 var data = new Data();
@@ -180,6 +184,11 @@ io.on('connection', function (socket) {
 
   socket.on('orderDone', function (orderId) {
     data.markOrderDone(orderId);
+    io.emit('currentQueue', {orders: data.getAllOrders() });
+  });
+
+  socket.on('orderNotDone', function (orderId) {
+    data.markOrderNotDone(orderId);
     io.emit('currentQueue', {orders: data.getAllOrders() });
   });
 

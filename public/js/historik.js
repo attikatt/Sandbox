@@ -56,7 +56,6 @@ var vm = new Vue({
     },
 
     displayChosenDrink: function(order, orderId) {
-
       var ingredientList =[]
       var ingred = []
       for (var i = 0; i < order.ingredients.length; i++){
@@ -65,12 +64,14 @@ var vm = new Vue({
         //document.getElementById('orderInfoHead').innerHTML = "#" + orderId +"<br>" + order.type.toUpperCase()
         //document.getElementById('orderInfo').innerHTML = ingredientList.join('<br>')
       },
+      takeOrderBack: function(order){
+        socket.emit("orderNotDone", order.orderId);
+      },
       searchForOrder: function(){
         console.log(orderNumSearch);
       }
     }
   });
-
 
 function updateClock(){
 var now = new Date(),
@@ -117,10 +118,6 @@ var orderNumSearch = '';
  function numberPressed(letterButton){
      var letterButton = letterButton.value;
      numLetterList.push(letterButton);
-     orderNumSearch = '';
-     for (var i =0; i < numLetterList.length; i++){
-       orderNumSearch = Number(orderNumSearch + numLetterList[i]);
-     };
      document.getElementById("changeSaldoConsoleChild").innerHTML = numLetterList.join("");
  }
 

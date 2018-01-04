@@ -10,7 +10,7 @@ Vue.component('ingredient', {
                   <label id="ing_stock">\
                   {{item.stock}}\
                   </label>\
-              </div>',
+              </div>', //sätt lang = sv i main istället 
     data: function(){
     return{
     chosen: false

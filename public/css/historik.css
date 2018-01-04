@@ -73,6 +73,21 @@ body{
 
 }
 
+#takeOrderBack{
+  font-family: 'champagne__limousinesregular', arial, sans-serif;
+  border: 2px solid white;
+  border-radius: 1vh;
+  font-size: 2vh;
+  height: 8vh;
+  width: 20vw;
+  color: white;
+  position: absolute;
+  left: 5vw;
+  bottom: 6vh;
+  background: rgb(255,255,255,0.25);
+  cursor: pointer;
+}
+
 #searchButton{
   float: right;
   background-color: transparent;
