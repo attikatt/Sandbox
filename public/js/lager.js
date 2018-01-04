@@ -5,7 +5,7 @@ Vue.component('ingredient', {
   props: ['item','lang','name'],
   template: ' <div v-bind:class="[{highlight: chosen}, \'ingredient\']" v-on:click="putToChosen()">\
                   <label id="ing_tit">\
-                  {{item["ingredient_"+ lang]}}\
+                  {{item["ingredient_sv"]}}\
                   </label>\
                   <label id="ing_stock">\
                   {{item.stock}}\
@@ -37,7 +37,7 @@ var vm = new Vue({
       var saldo = Number(saldoLetterList.join(''))
       if (saldoLetterList.length > 0){
       socket.emit('updateStock', {ingredient:this.chosenIng}, saldo)
-      vm.chosenIng.stock = saldo; 
+      vm.chosenIng.stock = saldo;
       clearSaldoField()
     }
       //socket emit (meddelande till servern) updateStock,{ingredients:[chosenIng]+skicka med amount}
@@ -85,7 +85,7 @@ function clearSaldoField(){
 function scrollFunction(value){
   //divideIngredientsIntoCategories()
   for (var i=0; i<vm.ingredients.length; i++){
-    if (vm.ingredients[i].ingredient_en[0].toUpperCase() === value){
+    if (vm.ingredients[i].ingredient_sv[0].toUpperCase() === value){
       var element = document.getElementById(vm.ingredients[i].ingredient_id);
       element.scrollIntoView();
       break;
