@@ -66,10 +66,11 @@ setTimeout(updateClock,1000);
 var saldoLetterList = [];
 
 function numberPressed(letterButton){
-    if (vm.chosenIng == "No ingredient chosen");
+    if (vm.chosenIng != "No ingredient chosen"){
     var letterButton = letterButton.value;
     saldoLetterList.push(letterButton);
     document.getElementById("changeSaldoConsoleChild").innerHTML = saldoLetterList.join("");
+  }
 }
 
 function backSpaceLetter(){
